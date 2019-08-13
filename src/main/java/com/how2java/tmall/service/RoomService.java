@@ -19,7 +19,6 @@ public class RoomService {
     @Autowired
     RoomDAO roomDAO;
 
-
     public Page4Navigator<Room> list(int start, int size, int navigatePages) {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(start, size,sort);
@@ -31,4 +30,22 @@ public class RoomService {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         return roomDAO.findAll(sort);
     }
+
+    public void add(Room bean){
+        roomDAO.save(bean);
+    }
+
+    public void delete(int id){
+        roomDAO.delete(id);
+    }
+
+    public Room get(int id){
+        Room bean = roomDAO.findOne(id);
+        return bean;
+    }
+
+    public void update(Room bean){
+        roomDAO.save(bean);
+    }
+
 }

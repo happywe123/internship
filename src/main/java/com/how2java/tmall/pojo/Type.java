@@ -20,7 +20,6 @@ public class Type {
     int id;
     
     String name;
-
     double price;
     double deposit;
 

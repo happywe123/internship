@@ -19,7 +19,6 @@ public class HotelService {
     @Autowired
     HotelDAO hotelDAO;
 
-
     public Page4Navigator<Hotel> list(int start, int size, int navigatePages) {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(start, size,sort);

@@ -20,7 +20,6 @@ public class CustomerService {
     @Autowired
     CustomerDAO customerDAO;
 
-
     public Page4Navigator<Customer> list(int start, int size, int navigatePages) {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(start, size,sort);
@@ -31,5 +30,22 @@ public class CustomerService {
     public List<Customer> list() {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         return customerDAO.findAll(sort);
+    }
+
+    public void add(Customer bean){
+        customerDAO.save(bean);
+    }
+
+    public void delete(int id){
+        customerDAO.delete(id);
+    }
+
+    public Customer get(int id){
+        Customer bean = customerDAO.findOne(id);
+        return bean;
+    }
+
+    public void update(Customer bean){
+        customerDAO.save(bean);
     }
 }

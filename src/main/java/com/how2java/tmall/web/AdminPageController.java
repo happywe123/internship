@@ -15,95 +15,69 @@ public class AdminPageController {
 //		return "admin/login";
 //	}
 
-
-
     @GetMapping(value="/admin")
     public String admin(){
-        return "redirect:admin_order_list";
+        return "redirect:admin_type_list";
+    }
+
+    @GetMapping(value="/admin_type_list")
+    public String listTypes(){
+        return "admin/listType";
+    }
+
+    @GetMapping(value="/admin_type_edit")
+    public String editType(){
+        return "admin/editType";
+    }
+
+    @GetMapping(value="/admin_room_list")
+    public String listRooms(){
+        return "admin/listRooms";
+    }
+
+    @GetMapping(value="/admin_room_edit")
+    public String editRoom(){
+        return "admin/editRoom";
     }
 
     @GetMapping(value="/admin_order_list")
-    public String listOrder() {
+    public String listOrders() {
         return "admin/listOrder";
     }
 
+    @GetMapping(value="/admin_booking_list")
+    public String listBookings() {
+        return "admin/listBooking";
+    }
 
+    @GetMapping(value="/admin_booking_edit")
+    public String editBooking(){
+        return "admin/editBooking";
+    }
 
-//    @GetMapping(value="/admin")
-//    public String admin(){
-//        return "redirect:admin_booking_list";
-//    }
-//
-//    @GetMapping(value="/admin_booking_list")
-//    public String listCard() {
-//        return "admin/listBooking";
-//    }
+	@GetMapping(value="/admin_customer_list")
+	public String listCustomers() {
+        return "admin/listCustomer";
+    }
 
+    @GetMapping(value="/admin_customer_edit")
+    public String editCustomer(){
+        return "admin/editCustomer";
+    }
 
+	@GetMapping(value="/admin_card_list")
+	public String listCards(){
+		return "admin/listCard";
+	}
 
-//    @GetMapping(value="/admin")
-//	public String admin(){
-//		return "redirect:admin_customer_list";
-//	}
-//
-//	@GetMapping(value="/admin_customer_list")
-//	public String listCard() {
-//        return "admin/listCustomer";
-//    }
-//
+	@GetMapping(value="/admin_building_list")
+	public String listBuildings(){
+		return "admin/listBuilding";
+	}
 
-//	@GetMapping(value="/admin")
-//	public String admin(){
-//		return "redirect:admin_card_list";
-//	}
-//
-//	@GetMapping(value="/admin_card_list")
-//	public String listCard(){
-//		return "admin/listCard";
-//	}
+	@GetMapping(value="/admin_hotel_list")
+	public String listHotels(){
+		return "admin/listHotel";
+	}
 
-
-//	@GetMapping(value="/admin")
-//	public String admin(){
-//		return "redirect:admin_room_list";
-//	}
-//
-//	@GetMapping(value="/admin_room_list")
-//	public String listRooms(){
-//		return "admin/listRooms";
-//	}
-
-
-//	@GetMapping(value="/admin")
-//	public String admin(){
-//		return "redirect:admin_building_list";
-//	}
-//
-//	@GetMapping(value="/admin_building_list")
-//	public String listBuilding(){
-//		return "admin/listBuilding";
-//	}
-
-
-//	@GetMapping(value="/admin")
-//	public String admin(){
-//		return "redirect:admin_hotel_list";
-//	}
-//
-//	@GetMapping(value="/admin_hotel_list")
-//	public String listHotel(){
-//		return "admin/listHotel";
-//	}
-
-
-
-//	@GetMapping(value="/admin")
-//    public String admin(){
-//		return "redirect:admin_type_list";
-//    }
-//
-//	@GetMapping(value="/admin_type_list")
-//	public String listType(){
-//		return "admin/listType";
-//	}
 }

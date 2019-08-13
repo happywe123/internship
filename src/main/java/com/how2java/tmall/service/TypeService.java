@@ -18,7 +18,6 @@ public class TypeService {
 	@Autowired
 	TypeDAO typeDAO;
 
-
 	public Page4Navigator<Type> list(int start, int size, int navigatePages) {
 		Sort sort = new Sort(Sort.Direction.DESC, "id");
 		Pageable pageable = new PageRequest(start, size,sort);
@@ -26,24 +25,26 @@ public class TypeService {
 
 		return new Page4Navigator<>(pageFromJPA,navigatePages);
 	}
+
 	public List<Type> list() {
     	Sort sort = new Sort(Sort.Direction.DESC, "id");
 		return typeDAO.findAll(sort);
 	}
 
-//	public void add(Type bean) {
-//		typeDAO.save(bean);
-//	}
-//
-//	public void delete(int id) {
-//		typeDAO.delete(id);
-//	}
-//
-//	public Type get(int id) {
-//		Type c= typeDAO.findOne(id);
-//		return c;
-//	}
-//	public void update(Type bean) {
-//		typeDAO.save(bean);
-//	}
+	public void add(Type bean) {
+		typeDAO.save(bean);
+	}
+
+	public void delete(int id) {
+		typeDAO.delete(id);
+	}
+
+	public Type get(int id) {
+		Type c= typeDAO.findOne(id);
+		return c;
+	}
+	public void update(Type bean) {
+		typeDAO.save(bean);
+	}
+
 }

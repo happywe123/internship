@@ -1,8 +1,6 @@
 package com.how2java.tmall.pojo;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 
 @Entity
@@ -25,10 +23,7 @@ public class Room {
 
     private int roomnum;
 
-
-
-    private String status;
-
+    private String state;
 
     public int getId() {
         return id;
@@ -62,11 +57,11 @@ public class Room {
         this.roomnum = roomnum;
     }
 
-    public String getStatus() {
-        return status;
+    public String getState() {
+        return state;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setState(String status) {
+        this.state = status;
     }
 }

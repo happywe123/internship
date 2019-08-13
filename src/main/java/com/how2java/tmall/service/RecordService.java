@@ -19,7 +19,6 @@ public class RecordService {
     @Autowired
     RecordDAO orderDAO;
 
-
     public Page4Navigator<Record> list(int start, int size, int navigatePages) {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(start, size,sort);
@@ -32,5 +31,21 @@ public class RecordService {
         return orderDAO.findAll(sort);
     }
 
+    public void add(Record bean){
+        orderDAO.save(bean);
+    }
+
+    public void delete(int id){
+        orderDAO.delete(id);
+    }
+
+    public Record get(int id){
+        Record bean = orderDAO.findOne(id);
+        return bean;
+    }
+
+    public void update(Record bean){
+        orderDAO.save(bean);
+    }
 
 }

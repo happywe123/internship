@@ -20,7 +20,6 @@ public class BookingService {
     @Autowired
     BookingDAO bookingDAO;
 
-
     public Page4Navigator<Booking> list(int start, int size, int navigatePages) {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(start, size,sort);
@@ -32,4 +31,7 @@ public class BookingService {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         return bookingDAO.findAll(sort);
     }
+
+
+
 }

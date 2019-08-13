@@ -14,7 +14,7 @@ public class Card {
     int id;
 
     private String category;
-    private String status;
+    private String state;
     private int locknum;
 
 
@@ -35,11 +35,11 @@ public class Card {
     }
 
     public String getStatus() {
-        return status;
+        return state;
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.state = status;
     }
 
     public int getLocknum() {
