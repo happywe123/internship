@@ -9,7 +9,8 @@
         var data4Vue = {
             uri:'customers',
             pagination:{},
-            beans: []
+            beans: [],
+            bean:{id:0,name:'',sex:'',telphone:'',document:'',documentnumber:'',lvxingtuan:'',isteam:''}
         };
 
         //ViewModel
@@ -27,6 +28,49 @@
                         vue.beans = response.data.content	;
                     });
                 },
+
+                // add
+                add:function () {
+                    if(!checkEmpty(this.bean.name, "顾客姓名"))
+                        return;
+                    if(!checkEmpty(this.bean.sex, "顾客性别"))
+                        return;
+                    if(!checkNumber(this.bean.telphone, "顾客电话"))
+                        return;
+                    if(!checkEmpty(this.bean.document, "顾客证件"))
+                        return;
+                    if(!checkNumber(this.bean.documentnumber, "证件号码"))
+                        return;
+                    if(!checkEmpty(this.bean.lvxingtuan, "旅行团"))
+                        return;
+                    if(!checkEmpty(this.bean.isteam, "是否"))
+                        return;
+
+                    var url = this.uri;
+                    axios.post(url,this.bean).then(function(response){
+                        vue.list(0);
+                        vue.bean = {id:0,name:'',sex:'',telphone:'',document:'',documentnumber:'',lvxingtuan:'',isteam:''}
+                    });
+                },
+
+
+                //delete
+//                deleteBean:function(id){
+//                    if(!checkDeleteLink())
+//                        return;
+//
+//                    var url = this.uri + "/" + id;
+//                    axios.delete(url).then(function(response){
+//                        if(0 != response.data.length){
+//                            alert(response.data);
+//                        }
+//                        else{
+//                            vue.list(0);
+//                        }
+//                    })
+//                },
+
+
                 jump: function(page){
                     jump(page,vue); //定义在adminHeader.html 中
                 },
@@ -55,7 +99,7 @@
                 <th>旅行团</th>
                 <th>是否</th>
                 <th>编辑</th>
-                <th>删除</th>
+                <!--<th>删除</th>-->
             </tr>
             </thead>
             <tbody>
@@ -94,9 +138,9 @@
                 <td>
                     <a :href="'admin_customer_edit?id=' + bean.id "><span class="glyphicon glyphicon-edit"></span></a>
                 </td>
-                <td>
-                    <a href="#nowhere"  @click="deleteBean(bean.id)"><span class="   glyphicon glyphicon-trash"></span></a>
-                </td>
+                <!--<td>-->
+                    <!--<a href="#nowhere"  @click="deleteBean(bean.id)"><span class="glyphicon glyphicon-trash"></span></a>-->
+                <!--</td>-->
 
                 <!--
                                 <td>
@@ -117,6 +161,60 @@
         </table>
     </div>
     <div th:replace="include/admin/adminPage::html" ></div>
+
+
+    <div class="panel panel-warning addDiv">
+        <div class="panel-heading">新增顾客</div>
+        <div class="panel-body">
+            <table class="addTable">
+                <tr>
+                    <td>顾客姓名</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.name" type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>顾客性别</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.sex" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>顾客电话</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.telphone" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>顾客证件</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.document" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>证件号码</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.documentnumber" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>旅行团</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.lvxingtuan" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>是否</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.isteam" type="text" class="form-control"></td>
+                </tr>
+
+                <tr class="submitTR">
+                    <td colspan="2" align="center">
+                        <input type="hidden" name="id"   v-model.trim="bean.id" >
+                        <a href="#nowhere" class="btn btn-success" @click="add">提 交</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
 </div>
 <div th:replace="include/admin/adminFooter::html" ></div>
 </body>

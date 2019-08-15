@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:include="include/admin/adminHeader::html('编辑分类')" ></head>
+<head th:include="include/admin/adminHeader::html('编辑预订')" ></head>
 <body>
 <div th:replace="include/admin/adminNavigator::html" ></div>
 <script>
@@ -9,8 +9,8 @@
         var data4Vue = {
             uri: 'bookings',
             listURL:'admin_booking_list',
-            bean: { id: 0, name: '', hp: '0'},
-            file:''
+            bean:''
+           // file:''
         };
 
         //ViewModel
@@ -29,21 +29,22 @@
                     })
                 },
                 update:function () {
-                    if(!checkEmpty(this.bean.name, "分类名称"))
+                    if(!checkEmpty(this.bean.name, "顾客姓名"))
                         return;
-                    var url = this.uri+"/"+this.bean.id;
+                    if(!checkNumber(this.bean.room.roomnum, "房间号"))
+                        return;
+                    if(!checkEmpty(this.bean.type.name, "房间类型"))
+                        return;
+                    if(!checkNumber(this.bean.intime, "入住时间"))
+                        return;
+                    if(!checkEmpty(this.bean.state, "订单状态"))
+                        return;
 
-                    //axios.js 上传文件要用 formData 这种方式
-                    var formData = new FormData();
-                    formData.append("image", this.file);
-                    formData.append("name", this.bean.name);
-                    axios.put(url,formData).then(function(response){
+                    var url = this.uri;
+                    axios.put(url,this.bean).then(function(response){
                         location.href=vue.listURL;
                     });
                 },
-                getFile: function (event) {
-                    this.file = event.target.files[0];
-                }
             }
         });
     });
@@ -61,15 +62,31 @@
         <div class="panel-body">
             <table class="editTable">
                 <tr>
-                    <td>分类名称</td>
+                    <td>顾客姓名</td>
                     <td><input  @keyup.enter="update" v-model.trim="bean.name" type="text" class="form-control"></td>
                 </tr>
+
                 <tr>
-                    <td>分类图片</td>
-                    <td>
-                        <input id="categoryPic" accept="image/*" type="file" name="image" @change="getFile($event)" />
-                    </td>
+                    <td>房间号</td>
+                    <td><input  @keyup.enter="update" v-model.trim="bean.room.roomnum" type="text" class="form-control"></td>
                 </tr>
+
+                <tr>
+                    <td>房间类型</td>
+                    <td><input  @keyup.enter="update" v-model.trim="bean.type.name" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>入住时间</td>
+                    <td><input  @keyup.enter="update" v-model.trim="bean.intime" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>订单状态</td>
+                    <td><input  @keyup.enter="update" v-model.trim="bean.state" type="text" class="form-control"></td>
+                </tr>
+
+
                 <tr class="submitTR">
                     <td colspan="2" align="center">
                         <input type="hidden" name="id"   v-model.trim="bean.id" >

@@ -33,5 +33,24 @@ public class BookingService {
     }
 
 
+    public void add(Booking bean){
+        bookingDAO.save(bean);
+    }
+
+    public void delete(int id){
+        bookingDAO.delete(id);
+    }
+
+    public Booking get(int id){
+        Booking booking = bookingDAO.getOne(id);
+        return booking;
+    }
+
+    public void update(Booking  bean){
+        bookingDAO.save(bean);
+    }
+
+
+
 
 }

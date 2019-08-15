@@ -1,15 +1,12 @@
 package com.how2java.tmall.web;
 
-
 import com.how2java.tmall.pojo.Type;
 import com.how2java.tmall.service.TypeService;
 import com.how2java.tmall.util.Page4Navigator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
-import java.util.List;
+
  
 @RestController
 public class TypeController {
@@ -28,7 +25,6 @@ public class TypeController {
 		Type bean = typeService.get(id);
 		return bean;
 	}
-
 
 	@PostMapping("/typies")
 	public Object add(@RequestBody Type bean) throws Exception {

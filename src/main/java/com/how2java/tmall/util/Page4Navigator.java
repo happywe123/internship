@@ -1,11 +1,11 @@
 package com.how2java.tmall.util;
  
 import java.util.List;
-
 import org.springframework.data.domain.Page;
  
 public class Page4Navigator<T> {
     Page<T> pageFromJPA;
+
     int navigatePages;
      
     int totalPages;

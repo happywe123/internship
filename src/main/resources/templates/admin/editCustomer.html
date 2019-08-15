@@ -9,8 +9,7 @@
         var data4Vue = {
             uri: 'customers',
             listURL:'admin_customer_list',
-            bean: { id: 0, name: '', hp: '0'},
-            file:''
+            bean: ''
         };
 
         //ViewModel
@@ -29,21 +28,26 @@
                     })
                 },
                 update:function () {
-                    if(!checkEmpty(this.bean.name, "分类名称"))
+                    if(!checkEmpty(this.bean.name, "顾客姓名"))
                         return;
-                    var url = this.uri+"/"+this.bean.id;
+                    if(!checkEmpty(this.bean.sex, "顾客性别"))
+                        return;
+                    if(!checkNumber(this.bean.telphone, "顾客电话"))
+                        return;
+                    if(!checkEmpty(this.bean.document, "顾客证件"))
+                        return;
+                    if(!checkNumber(this.bean.documentnumber, "证件号码"))
+                        return;
+                    if(!checkEmpty(this.bean.lvxingtuan, "旅行团"))
+                        return;
+                    if(!checkEmpty(this.bean.isteam, "是否"))
+                        return;
 
-                    //axios.js 上传文件要用 formData 这种方式
-                    var formData = new FormData();
-                    formData.append("image", this.file);
-                    formData.append("name", this.bean.name);
-                    axios.put(url,formData).then(function(response){
+                    var url = this.uri;
+                    axios.put(url,this.bean).then(function(response){
                         location.href=vue.listURL;
                     });
                 },
-                getFile: function (event) {
-                    this.file = event.target.files[0];
-                }
             }
         });
     });
@@ -57,19 +61,43 @@
     </ol>
 
     <div class="panel panel-warning editDiv">
-        <div class="panel-heading">编辑分类</div>
+        <div class="panel-heading">编辑顾客</div>
         <div class="panel-body">
             <table class="editTable">
                 <tr>
-                    <td>分类名称</td>
+                    <td>顾客姓名</td>
                     <td><input  @keyup.enter="update" v-model.trim="bean.name" type="text" class="form-control"></td>
                 </tr>
                 <tr>
-                    <td>分类图片</td>
-                    <td>
-                        <input id="categoryPic" accept="image/*" type="file" name="image" @change="getFile($event)" />
-                    </td>
+                    <td>顾客性别</td>
+                    <td><input  @keyup.enter="update" v-model.trim="bean.sex" type="text" class="form-control"></td>
                 </tr>
+
+                <tr>
+                    <td>顾客电话</td>
+                    <td><input  @keyup.enter="update" v-model.trim="bean.telphone" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>顾客证件</td>
+                    <td><input  @keyup.enter="update" v-model.trim="bean.document" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>证件号码</td>
+                    <td><input  @keyup.enter="update" v-model.trim="bean.documentnumber" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>旅行团</td>
+                    <td><input  @keyup.enter="update" v-model.trim="bean.lvxingtuan" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>是否</td>
+                    <td><input  @keyup.enter="update" v-model.trim="bean.isteam" type="text" class="form-control"></td>
+                </tr>
+
                 <tr class="submitTR">
                     <td colspan="2" align="center">
                         <input type="hidden" name="id"   v-model.trim="bean.id" >

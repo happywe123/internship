@@ -8,8 +8,9 @@
     $(function(){
         var data4Vue = {
             uri:'rooms',
+            beans: [],
+            bean: {id:0,bid: '',tid:'','roomnum':9999,'state':'空净房'},
             pagination:{},
-            beans: []
         };
 
         //ViewModel
@@ -27,6 +28,43 @@
                         vue.beans = response.data.content	;
                     });
                 },
+
+                // add 函数
+                add: function () {
+                    if(!checkNumber(this.bean.bid, "房间所属楼栋"))
+                        return;
+                    if (!checkNumber(this.bean.tid, "房间类型"))
+                        return;
+                    if (!checkNumber(this.bean.roomnum, "房间门牌号"))
+                        return;
+                    if (!checkEmpty(this.bean.state, "房间状态"))
+                        return;
+
+                    var url = this.uri;
+                    console.log(vue.bean.bid);
+                    axios.post(url,this.bean).then(function(response){
+                        console.log(vue.bean.bid);
+                        vue.list(0);
+                        vue.bean =  {id:0,bid: '',tid:'','roomnum':9999,'state':'空净房'}
+                    });
+                },
+
+
+                // delete 函数
+                deleteBean: function (id) {
+                    if(!checkDeleteLink())
+                        return;
+                    var url = this.uri+"/"+id;
+                    axios.delete(url).then(function(response){
+                        if(0!=response.data.length){
+                            alert(response.data);
+                        }
+                        else{
+                            vue.list(0);
+                        }
+                    });
+                },
+
                 jump: function(page){
                     jump(page,vue); //定义在adminHeader.html 中
                 },
@@ -111,6 +149,44 @@
         </table>
     </div>
     <div th:replace="include/admin/adminPage::html" ></div>
+
+
+
+    <div class="panel panel-warning addDiv">
+        <div class="panel-heading">新增类型</div>
+        <div class="panel-body">
+            <table class="addTable">
+                <tr>
+                    <td>房间所属楼栋</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.bid" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>房间类型</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.tid" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>房间门牌号</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.roomnum" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>房间状态</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.state" type="text" class="form-control"></td>
+                </tr>
+
+                <tr class="submitTR">
+                    <td colspan="2" align="center">
+                        <a href="#nowhere"  @click="add" class="btn btn-success">提交</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
 
 </div>
 <div th:replace="include/admin/adminFooter::html" ></div>

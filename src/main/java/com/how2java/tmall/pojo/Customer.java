@@ -22,6 +22,7 @@ public class Customer {
     private String lvxingtuan;
     private String isteam;
 
+
     public int getId() {
         return id;
     }
@@ -54,12 +55,12 @@ public class Customer {
         this.telphone = telphone;
     }
 
-    public String getDocumnet() {
+    public String getDocument() {
         return document;
     }
 
-    public void setDocumnet(String documnet) {
-        this.document = documnet;
+    public void setDocument(String document) {
+        this.document = document;
     }
 
     public int getDocumentnumber() {

@@ -36,9 +36,9 @@ public class CustomerService {
         customerDAO.save(bean);
     }
 
-    public void delete(int id){
-        customerDAO.delete(id);
-    }
+//    public void delete(int id){
+//        customerDAO.delete(id);
+//    }
 
     public Customer get(int id){
         Customer bean = customerDAO.findOne(id);
