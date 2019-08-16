@@ -14,9 +14,10 @@ public class Building {
     @Column(name="id")
     int id;
 
-    @ManyToOne
-    @JoinColumn(name="hid")
-    private Hotel hotel;
+    String buildingname;
+
+    String remarks;
+
 
     public int getId() {
         return id;
@@ -26,11 +27,19 @@ public class Building {
         this.id = id;
     }
 
-    public Hotel getHotel() {
-        return hotel;
+    public String getBuildingname() {
+        return buildingname;
     }
 
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
+    public void setBuildingname(String buildingname) {
+        this.buildingname = buildingname;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 }

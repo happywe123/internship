@@ -9,7 +9,8 @@
         var data4Vue = {
             uri:'cards',
             pagination:{},
-            beans: []
+            beans: [],
+            bean:{category:'',state:'',locknum:''}
         };
 
         //ViewModel
@@ -27,6 +28,41 @@
                         vue.beans = response.data.content	;
                     });
                 },
+
+
+                //add
+                add:function () {
+                    if(!checkEmpty(this.bean.category, "卡片类型"))
+                        return;
+                    if(!checkEmpty(this.bean.state, "卡片状态"))
+                        return;
+                    if(!checkNumber(this.bean.locknum,"锁号"))
+                        return;
+
+                    var url = this.uri;
+                    axios.post(url,this.bean).then(function (response) {
+                        vue.list(0);
+                        vue.bean = {category:'',state:'',locknum:''}
+                    });
+
+                },
+
+                //delete
+                deleteBean:function(id){
+                    if(!checkDeleteLink())
+                        return;
+
+                    var url = this.uri + "/" + id;
+                    axios.delete(url).then(function(response){
+                       if(0 != response.data.length){
+                           alert(response.data);
+                       }
+                       else{
+                           vue.list(0);
+                       }
+                    });
+                },
+
                 jump: function(page){
                     jump(page,vue); //定义在adminHeader.html 中
                 },
@@ -50,6 +86,8 @@
                 <th>卡片类型</th>
                 <th>卡片状态</th>
                 <th>卡片锁号</th>
+                <th>编辑</th>
+                <th>删除</th>
             </tr>
             </thead>
             <tbody>
@@ -61,11 +99,18 @@
                 </td>
 
                 <td>
-                    {{bean.status}}
+                    {{bean.state}}
                 </td>
 
                 <td>
                     {{bean.locknum}}
+                </td>
+
+                <td>
+                    <a :href="'admin_card_edit?id=' + bean.id "><span class="glyphicon glyphicon-edit"></span></a>
+                </td>
+                <td>
+                    <a href="#nowhere"  @click="deleteBean(bean.id)"><span class="   glyphicon glyphicon-trash"></span></a>
                 </td>
                 <!--
                                 <td>
@@ -86,6 +131,33 @@
         </table>
     </div>
     <div th:replace="include/admin/adminPage::html" ></div>
+
+    <div class="panel panel-warning addDiv">
+        <div class="panel-heading">新增卡片</div>
+        <div class="panel-body">
+            <table class="addTable">
+                <tr>
+                    <td>卡片类型</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.category" type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>卡片状态</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.state" type="text" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>卡片锁号</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.locknum" type="text" class="form-control"></td>
+                </tr>
+
+                <tr class="submitTR">
+                    <td colspan="2" align="center">
+                        <a href="#nowhere"  @click="add" class="btn btn-success">提交</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
 </div>
 <div th:replace="include/admin/adminFooter::html" ></div>
 </body>

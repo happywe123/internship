@@ -70,14 +70,25 @@ public class AdminPageController {
 		return "admin/listCard";
 	}
 
+	@GetMapping(value="/admin_card_edit")
+    public String editCards(){
+	    return "admin/editCard";
+    }
+
 	@GetMapping(value="/admin_building_list")
 	public String listBuildings(){
 		return "admin/listBuilding";
 	}
 
-	@GetMapping(value="/admin_hotel_list")
-	public String listHotels(){
-		return "admin/listHotel";
-	}
+	@GetMapping(value="/admin_building_edit")
+    public String editBuildings(){
+	    return "admin/editBuilding";
+    }
+
+
+//	@GetMapping(value="/admin_hotel_list")
+//	public String listHotels(){
+//		return "admin/listHotel";
+//	}
 
 }

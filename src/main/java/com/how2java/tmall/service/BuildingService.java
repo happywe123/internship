@@ -18,7 +18,6 @@ public class BuildingService {
     @Autowired
     BuildingDAO buildingDAO;
 
-
     public Page4Navigator<Building> list(int start, int size, int navigatePages) {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(start, size,sort);
@@ -26,24 +25,27 @@ public class BuildingService {
 
         return new Page4Navigator<>(pageFromJPA,navigatePages);
     }
+
     public List<Building> list() {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         return buildingDAO.findAll(sort);
     }
 
-//	public void add(Type bean) {
-//		typeDAO.save(bean);
-//	}
-//
-//	public void delete(int id) {
-//		typeDAO.delete(id);
-//	}
-//
-//	public Type get(int id) {
-//		Type c= typeDAO.findOne(id);
-//		return c;
-//	}
-//	public void update(Type bean) {
-//		typeDAO.save(bean);
-//	}
+    public void add(Building bean){
+        buildingDAO.save(bean);
+    }
+
+    public void delete(int id){
+        buildingDAO.delete(id);
+    }
+
+    public void update(Building bean){
+        buildingDAO.save(bean);
+    }
+
+    public Building get(int id){
+        Building bean = buildingDAO.getOne(id);
+        return bean;
+    }
+
 }

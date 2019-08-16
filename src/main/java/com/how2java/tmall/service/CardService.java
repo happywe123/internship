@@ -20,13 +20,30 @@ public class CardService {
 
     public Page4Navigator<Card> list(int start, int size, int navigatePages) {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
-        Pageable pageable = new PageRequest(start, size,sort);
+        Pageable pageable = new PageRequest(start, size, sort);
         Page pageFromJPA = cardDAO.findAll(pageable);
-        return new Page4Navigator<>(pageFromJPA,navigatePages);
+        return new Page4Navigator<>(pageFromJPA, navigatePages);
     }
 
     public List<Card> list() {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         return cardDAO.findAll(sort);
+    }
+
+    public void add(Card card){
+        cardDAO.save(card);
+    }
+
+    public void delete(int id){
+        cardDAO.delete(id);
+    }
+
+    public Card get(int id){
+        Card card = cardDAO.getOne(id);
+        return card;
+    }
+
+    public void update(Card card){
+        cardDAO.save(card);
     }
 }
