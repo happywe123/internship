@@ -17,7 +17,6 @@ public class Card {
     private String state;
     private int locknum;
 
-
     public int getId() {
         return id;
     }
@@ -34,12 +33,12 @@ public class Card {
         this.category = category;
     }
 
-    public String getStatus() {
+    public String getState() {
         return state;
     }
 
-    public void setStatus(String status) {
-        this.state = status;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public int getLocknum() {
