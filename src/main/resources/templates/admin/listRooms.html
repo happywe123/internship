@@ -9,8 +9,9 @@
         var data4Vue = {
             uri:'rooms',
             beans: [],
-            bean: {id:0,bid: '',tid:'','roomnum':9999,'state':'空净房'},
+            bean: {bid: '',tid:'','roomnum':9999,'state':'空净房',remarks:''},
             pagination:{},
+           // building:''
         };
 
         //ViewModel
@@ -25,7 +26,9 @@
                     var url =  this.uri+ "?start="+start;
                     axios.get(url).then(function(response) {
                         vue.pagination = response.data;
-                        vue.beans = response.data.content	;
+                        vue.beans = response.data.content;
+                       // vue.building = vue.bean.building;
+                        //console.log(beans);
                     });
                 },
 
@@ -45,7 +48,7 @@
                     axios.post(url,this.bean).then(function(response){
                         console.log(vue.bean.bid);
                         vue.list(0);
-                        vue.bean =  {id:0,bid: '',tid:'','roomnum':9999,'state':'空净房'}
+                        vue.bean =  {bid: '',tid:'','roomnum':9999,'state':'空净房',remarks:''}
                     });
                 },
 
@@ -91,6 +94,7 @@
                 <th>房间单价</th>
                 <th>房间押金</th>
                 <th>房间状态</th>
+                <th>备注信息</th>
                 <th>编辑</th>
                 <th>删除</th>
             </tr>
@@ -100,7 +104,8 @@
                 <td>{{bean.id}}</td>
 
                 <td>
-                    {{bean.building.id}}
+                   <!--{{building.name}}-->
+                    {{bean.building.buildingname}} # {{bean.building.id}}
                 </td>
 
                 <td>
@@ -124,10 +129,14 @@
                 </td>
 
                 <td>
+                    {{bean.remarks}}
+                </td>
+
+                <td>
                     <a :href="'admin_room_edit?id=' + bean.id "><span class="glyphicon glyphicon-edit"></span></a>
                 </td>
                 <td>
-                    <a href="#nowhere"  @click="deleteBean(bean.id)"><span class="   glyphicon glyphicon-trash"></span></a>
+                    <a href="#nowhere"  @click="deleteBean(bean.id)"><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
 
                 <!--
@@ -174,6 +183,11 @@
                 <tr>
                     <td>房间状态</td>
                     <td><input  @keyup.enter="add" v-model.trim="bean.state" type="text" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>备注信息</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.remarks" type="text" class="form-control"></td>
                 </tr>
 
                 <tr class="submitTR">

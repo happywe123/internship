@@ -1,9 +1,7 @@
 package com.how2java.tmall.service;
 
-import com.how2java.tmall.dao.BookingDAO;
-import com.how2java.tmall.dao.BuildingDAO;
-import com.how2java.tmall.pojo.Booking;
-import com.how2java.tmall.pojo.Building;
+import com.how2java.tmall.dao.OrdersDAO;
+import com.how2java.tmall.pojo.Orders;
 import com.how2java.tmall.util.Page4Navigator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,46 +9,42 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
-public class BookingService {
+public class OrdersService {
 
     @Autowired
-    BookingDAO bookingDAO;
+    OrdersDAO ordersDAO;
 
-    public Page4Navigator<Booking> list(int start, int size, int navigatePages) {
+    public Page4Navigator<Orders> list(int start, int size, int navigatePages) {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(start, size,sort);
-        Page pageFromJPA = bookingDAO.findAll(pageable);
+        Page pageFromJPA = ordersDAO.findAll(pageable);
 
         return new Page4Navigator<>(pageFromJPA,navigatePages);
     }
-    public List<Booking> list() {
+
+    public List<Orders> list() {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
-        return bookingDAO.findAll(sort);
+        return ordersDAO.findAll(sort);
     }
 
-
-    public void add(Booking bean){
-        bookingDAO.save(bean);
+    public void add(Orders bean){
+        ordersDAO.save(bean);
     }
 
     public void delete(int id){
-        bookingDAO.delete(id);
+        ordersDAO.delete(id);
     }
 
-    public Booking get(int id){
-        Booking booking = bookingDAO.getOne(id);
-        return booking;
+    public Orders get(int id){
+        Orders orders = ordersDAO.getOne(id);
+        return orders;
     }
 
-    public void update(Booking  bean){
-        bookingDAO.save(bean);
+    public void update(Orders bean){
+        ordersDAO.save(bean);
     }
-
-
-
 
 }

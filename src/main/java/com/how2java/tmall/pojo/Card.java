@@ -16,6 +16,15 @@ public class Card {
     private String category;
     private String state;
     private int locknum;
+    private String remarks;
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 
     public int getId() {
         return id;

@@ -18,7 +18,6 @@ public class Building {
 
     String remarks;
 
-
     public int getId() {
         return id;
     }

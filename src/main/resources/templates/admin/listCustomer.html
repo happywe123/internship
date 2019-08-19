@@ -10,7 +10,7 @@
             uri:'customers',
             pagination:{},
             beans: [],
-            bean:{id:0,name:'',sex:'',telphone:'',document:'',documentnumber:'',lvxingtuan:'',isteam:''}
+            bean:{id:0,name:'',sex:'',telphone:'',document:'',documentnumber:'',lvxingtuan:'',remarks:''}
         };
 
         //ViewModel
@@ -43,13 +43,11 @@
                         return;
                     if(!checkEmpty(this.bean.lvxingtuan, "旅行团"))
                         return;
-                    if(!checkEmpty(this.bean.isteam, "是否"))
-                        return;
 
                     var url = this.uri;
                     axios.post(url,this.bean).then(function(response){
                         vue.list(0);
-                        vue.bean = {id:0,name:'',sex:'',telphone:'',document:'',documentnumber:'',lvxingtuan:'',isteam:''}
+                        vue.bean = {id:0,name:'',sex:'',telphone:'',document:'',documentnumber:'',lvxingtuan:'',remarks:''}
                     });
                 },
 
@@ -97,7 +95,7 @@
                 <th>顾客证件</th>
                 <th>证件号码</th>
                 <th>旅行团</th>
-                <th>是否</th>
+                <th>备注信息</th>
                 <th>编辑</th>
                 <!--<th>删除</th>-->
             </tr>
@@ -132,7 +130,7 @@
                 </td>
 
                 <td>
-                    {{bean.isteam}}
+                    {{bean.remarks}}
                 </td>
 
                 <td>
@@ -197,8 +195,8 @@
                 </tr>
 
                 <tr>
-                    <td>是否</td>
-                    <td><input  @keyup.enter="add" v-model.trim="bean.isteam" type="text" class="form-control"></td>
+                    <td>备注信息</td>
+                    <td><input  @keyup.enter="add" v-model.trim="bean.remarks" type="text" class="form-control"></td>
                 </tr>
 
                 <tr class="submitTR">
@@ -210,11 +208,6 @@
             </table>
         </div>
     </div>
-
-
-
-
-
 </div>
 <div th:replace="include/admin/adminFooter::html" ></div>
 </body>

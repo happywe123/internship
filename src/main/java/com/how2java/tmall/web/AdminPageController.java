@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AdminPageController {
 
+//    // 登录页面的展示页
 //	@GetMapping(value="/")
 //	public String index(){
 //		return "redirect:home";
@@ -15,6 +16,8 @@ public class AdminPageController {
 //		return "admin/login";
 //	}
 
+
+    // 房间类型跳转页
     @GetMapping(value="/admin")
     public String admin(){
         return "redirect:admin_type_list";
@@ -30,6 +33,8 @@ public class AdminPageController {
         return "admin/editType";
     }
 
+
+    // 房间展示的跳转页
     @GetMapping(value="/admin_room_list")
     public String listRooms(){
         return "admin/listRooms";
@@ -40,21 +45,20 @@ public class AdminPageController {
         return "admin/editRoom";
     }
 
-    @GetMapping(value="/admin_order_list")
+
+    // 订单的页面跳转
+    @GetMapping(value="/admin_orders_list")
     public String listOrders() {
-        return "admin/listOrder";
+        return "admin/listOrders";
     }
 
-    @GetMapping(value="/admin_booking_list")
-    public String listBookings() {
-        return "admin/listBooking";
+    @GetMapping(value="/admin_orders_edit")
+    public String editOrders(){
+        return "admin/editOrders";
     }
 
-    @GetMapping(value="/admin_booking_edit")
-    public String editBooking(){
-        return "admin/editBooking";
-    }
 
+    // 顾客信息的展示页
 	@GetMapping(value="/admin_customer_list")
 	public String listCustomers() {
         return "admin/listCustomer";
@@ -65,6 +69,7 @@ public class AdminPageController {
         return "admin/editCustomer";
     }
 
+    // 卡片的展示页
 	@GetMapping(value="/admin_card_list")
 	public String listCards(){
 		return "admin/listCard";
@@ -75,6 +80,7 @@ public class AdminPageController {
 	    return "admin/editCard";
     }
 
+    // 楼栋信息的展示页
 	@GetMapping(value="/admin_building_list")
 	public String listBuildings(){
 		return "admin/listBuilding";
@@ -85,10 +91,5 @@ public class AdminPageController {
 	    return "admin/editBuilding";
     }
 
-
-//	@GetMapping(value="/admin_hotel_list")
-//	public String listHotels(){
-//		return "admin/listHotel";
-//	}
 
 }

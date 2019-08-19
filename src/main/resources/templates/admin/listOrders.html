@@ -7,7 +7,7 @@
 <script>
     $(function(){
         var data4Vue = {
-            uri:'bookings',
+            uri:'orders',
             pagination:{},
             beans: []
         };
@@ -35,6 +35,15 @@
                 }
             }
         });
+
+        Vue.filter('formatDateFilter', function (value, formatString) {
+            if(null==value)
+                return "";
+            formatString = formatString || 'YYYY-MM-DD HH:mm:ss';
+            return moment(value).format(formatString);
+        });
+
+
     });
 
 </script>
@@ -49,9 +58,13 @@
                 <th>ID</th>
                 <th>客人姓名</th>
                 <th>预订房间</th>
-                <th>房间类型</th>
+                <!--<th>房间类型</th>-->
+                <th>预订时间</th>
                 <th>入住时间</th>
-                <th>预订状态</th>
+                <th>离开时间</th>
+                <th>总额</th>
+                <th>状态</th>
+                <th>备注</th>
                 <th>编辑</th>
                 <th>删除</th>
             </tr>
@@ -65,26 +78,42 @@
                 </td>
 
                 <td>
-                    {{bean.room.name}}
+                    {{bean.room.roomnum}}({{bean.room.type.name}})
+                </td>
+
+                <!--<td>-->
+                    <!--{{bean.room.type.name}}-->
+                <!--</td>-->
+
+                <td>
+                    {{bean.ordertime | formatDateFilter}}
                 </td>
 
                 <td>
-                    {{bean.type.name}}
+                    {{bean.checkintime | formatDateFilter}}
                 </td>
 
                 <td>
-                    {{bean.intime}}
+                    {{bean.checkouttime | formatDateFilter}}
                 </td>
 
                 <td>
-                    {{bean.state}}
+                    {{bean.totalmoney}}
                 </td>
 
                 <td>
-                    <a :href="'admin_booking_edit?id=' + bean.id "><span class="glyphicon glyphicon-edit"></span></a>
+                    {{bean.status}}
+                </td>
+
+                <td>
+                    {{bean.remarks}}
+                </td>
+
+                <td>
+                    <a :href="'admin_orders_edit?id=' + bean.id "><span class="glyphicon glyphicon-edit"></span></a>
                 </td>
                 <td>
-                    <a href="#nowhere"  @click="deleteBean(bean.id)"><span class="   glyphicon glyphicon-trash"></span></a>
+                    <a href="#nowhere"  @click="deleteBean(bean.id)"><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
                 <!--
                                 <td>

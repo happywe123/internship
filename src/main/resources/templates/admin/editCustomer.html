@@ -40,8 +40,8 @@
                         return;
                     if(!checkEmpty(this.bean.lvxingtuan, "旅行团"))
                         return;
-                    if(!checkEmpty(this.bean.isteam, "是否"))
-                        return;
+//                    if(!checkEmpty(this.bean.remark, "是否"))
+//                        return;
 
                     var url = this.uri;
                     axios.put(url,this.bean).then(function(response){
@@ -94,8 +94,8 @@
                 </tr>
 
                 <tr>
-                    <td>是否</td>
-                    <td><input  @keyup.enter="update" v-model.trim="bean.isteam" type="text" class="form-control"></td>
+                    <td>备注信息</td>
+                    <td><input  @keyup.enter="update" v-model.trim="bean.remarks" type="text" class="form-control"></td>
                 </tr>
 
                 <tr class="submitTR">

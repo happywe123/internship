@@ -20,8 +20,20 @@ public class Type {
     int id;
     
     String name;
+
     double price;
+
     double deposit;
+
+    private String remarks;
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 
     public double getPrice() {
         return price;

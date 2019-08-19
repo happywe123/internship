@@ -71,6 +71,11 @@
                     <td><input  @keyup.enter="update" v-model.trim="bean.locknum" type="text" class="form-control"></td>
                 </tr>
 
+                <tr>
+                    <td>备注信息</td>
+                    <td><input  @keyup.enter="update" v-model.trim="bean.remarks" type="text" class="form-control"></td>
+                </tr>
+
                 <tr class="submitTR">
                     <td colspan="2" align="center">
                         <input type="hidden" name="id"   v-model.trim="bean.id" >

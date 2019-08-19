@@ -20,8 +20,16 @@ public class Customer {
     private String document;
     private int documentnumber;
     private String lvxingtuan;
-    private String isteam;
 
+    private String remarks;
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 
     public int getId() {
         return id;
@@ -79,11 +87,5 @@ public class Customer {
         this.lvxingtuan = lvxingtuan;
     }
 
-    public String getIsteam() {
-        return isteam;
-    }
 
-    public void setIsteam(String isteam) {
-        this.isteam = isteam;
-    }
 }
