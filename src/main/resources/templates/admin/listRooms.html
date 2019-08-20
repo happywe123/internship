@@ -9,7 +9,7 @@
         var data4Vue = {
             uri:'rooms',
             beans: [],
-            bean: {bid: '',tid:'','roomnum':9999,'state':'空净房',remarks:''},
+            bean: {id:0,tid:'','roomnum':9999,'state':'空净房',remarks:''},
             pagination:{},
            // building:''
         };
@@ -34,8 +34,8 @@
 
                 // add 函数
                 add: function () {
-                    if(!checkNumber(this.bean.bid, "房间所属楼栋"))
-                        return;
+//                    if(!checkNumber(this.bean.bid, "房间所属楼栋"))
+//                        return;
                     if (!checkNumber(this.bean.tid, "房间类型"))
                         return;
                     if (!checkNumber(this.bean.roomnum, "房间门牌号"))
@@ -44,11 +44,11 @@
                         return;
 
                     var url = this.uri;
-                    console.log(vue.bean.bid);
+                   // console.log(vue.bean.id);
                     axios.post(url,this.bean).then(function(response){
-                        console.log(vue.bean.bid);
+                       // console.log(vue.bean.id);
                         vue.list(0);
-                        vue.bean =  {bid: '',tid:'','roomnum':9999,'state':'空净房',remarks:''}
+                        vue.bean =  {id:0,tid:'','roomnum':9999,'state':'空净房',remarks:''}
                     });
                 },
 
@@ -88,7 +88,7 @@
             <thead>
             <tr class="success">
                 <th>ID</th>
-                <th>房间所属楼栋</th>
+                <!--<th>房间所属楼栋</th>-->
                 <th>房间门牌号</th>
                 <th>房间类型</th>
                 <th>房间单价</th>
@@ -103,10 +103,10 @@
             <tr v-for="bean in beans ">
                 <td>{{bean.id}}</td>
 
-                <td>
-                   <!--{{building.name}}-->
-                    {{bean.building.buildingname}} # {{bean.building.id}}
-                </td>
+                <!--<td>-->
+                   <!--&lt;!&ndash;{{building.name}}&ndash;&gt;-->
+                    <!--{{bean.building.buildingname}} # {{bean.building.id}}-->
+                <!--</td>-->
 
                 <td>
                     {{bean.roomnum}}
@@ -165,10 +165,10 @@
         <div class="panel-heading">新增类型</div>
         <div class="panel-body">
             <table class="addTable">
-                <tr>
-                    <td>房间所属楼栋</td>
-                    <td><input  @keyup.enter="add" v-model.trim="bean.bid" type="text" class="form-control"></td>
-                </tr>
+                <!--<tr>-->
+                    <!--<td>房间所属楼栋</td>-->
+                    <!--<td><input  @keyup.enter="add" v-model.trim="bean.bid" type="text" class="form-control"></td>-->
+                <!--</tr>-->
 
                 <tr>
                     <td>房间类型</td>

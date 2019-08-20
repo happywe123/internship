@@ -1,27 +1,41 @@
 package com.how2java.tmall.web;
 
+import com.how2java.tmall.pojo.User;
+import com.how2java.tmall.util.Result;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class AdminPageController {
 
-//    // 登录页面的展示页
-//	@GetMapping(value="/")
-//	public String index(){
-//		return "redirect:home";
-//	}
-//	@GetMapping(value="/home")
-//	public String home(){
-//		return "admin/login";
-//	}
+//
+//    public Object checkLogin( HttpSession session) {
+//        User user =(User)  session.getAttribute("user");
+//        if(null!=user)
+//            return Result.success();
+//        return Result.fail("未登录");
+//    }
 
 
-    // 房间类型跳转页
-    @GetMapping(value="/admin")
-    public String admin(){
-        return "redirect:admin_type_list";
-    }
+    // 登录页面的展示页
+	@GetMapping(value="/admin")
+	public String index(){
+		return "redirect:login_page";
+	}
+
+	@GetMapping(value="/login_page")
+	public String home(){
+		return "admin/login";
+	}
+
+//    // 房间类型跳转页
+//    @GetMapping(value="/admin")
+//    public String admin(){
+//        return "redirect:admin_type_list";
+//    }
 
     @GetMapping(value="/admin_type_list")
     public String listTypes(){
@@ -33,7 +47,6 @@ public class AdminPageController {
         return "admin/editType";
     }
 
-
     // 房间展示的跳转页
     @GetMapping(value="/admin_room_list")
     public String listRooms(){
@@ -44,7 +57,6 @@ public class AdminPageController {
     public String editRoom(){
         return "admin/editRoom";
     }
-
 
     // 订单的页面跳转
     @GetMapping(value="/admin_orders_list")
@@ -80,16 +92,16 @@ public class AdminPageController {
 	    return "admin/editCard";
     }
 
-    // 楼栋信息的展示页
-	@GetMapping(value="/admin_building_list")
-	public String listBuildings(){
-		return "admin/listBuilding";
-	}
-
-	@GetMapping(value="/admin_building_edit")
-    public String editBuildings(){
-	    return "admin/editBuilding";
-    }
+//    // 楼栋信息的展示页
+//	@GetMapping(value="/admin_building_list")
+//	public String listBuildings(){
+//		return "admin/listBuilding";
+//	}
+//
+//	@GetMapping(value="/admin_building_edit")
+//    public String editBuildings(){
+//	    return "admin/editBuilding";
+//    }
 
 
 }

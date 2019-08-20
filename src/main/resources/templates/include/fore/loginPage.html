@@ -16,28 +16,23 @@
                 methods: {
                     login:function(){
                         var url =  this.uri;
-                        if(0==this.user.name.length){
-                            $("span.errorMessage").html("请输入用户名");
-                            $("div.loginErrorMessageDiv").css("visibility","visible");
-                            return;
-                        }
-                        if(0==this.user.password.length){
-                            $("span.errorMessage").html("请输入密码");
-                            $("div.loginErrorMessageDiv").css("visibility","visible");
-                            return;
-                        }
-
-                        console.log(this.user.name);
-                        console.log(this.user.password);
+//                        if(0==this.user.name.length){
+//                            $("span.errorMessage").html("请输入用户名");
+//                            $("div.loginErrorMessageDiv").css("visibility","visible");
+//                            return;
+//                        }
+//                        if(0==this.user.password.length){
+//                            $("span.errorMessage").html("请输入密码");
+//                            $("div.loginErrorMessageDiv").css("visibility","visible");
+//                            return;
+//                        }
 
 
+                        console.log(1);
                         axios.post(url,this.user).then(function(response) {
-
-                            console.log(1);
-                            console.log(2);
                             var result = response.data;
                             if(result.code==0){
-                                location.href="admin";
+                                location.href="admin_type_list";
                             }
                             else{
                                 $("span.errorMessage").html(result.message);
@@ -53,41 +48,79 @@
         })
     </script>
 
-    <div id="loginDiv" style="position: relative">
-        <div class="simpleLogo">
-            <a th:href="${application.contextPath}"><img src="img/site/simpleLogo.png"></a>
-        </div>
-        <img id="loginBackgroundImg" class="loginBackgroundImg" src="img/site/loginBackground.png">
-        <div id="loginSmallDiv" class="loginSmallDiv">
-            <div class="loginErrorMessageDiv">
-                <div class="alert alert-danger" >
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
-                    <span class="errorMessage">22</span>
+    <!--<div id="loginDiv" style="position: relative">-->
+        <!--<div class="simpleLogo">-->
+            <!--<a th:href="${application.contextPath}"><img src="img/site/simpleLogo.png"></a>-->
+        <!--</div>-->
+        <!--<img id="loginBackgroundImg" class="loginBackgroundImg" src="img/site/loginBackground.png">-->
+        <!--<div id="loginSmallDiv" class="loginSmallDiv">-->
+            <!--<div class="loginErrorMessageDiv">-->
+                <!--<div class="alert alert-danger" >-->
+                    <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>-->
+                    <!--<span class="errorMessage">22</span>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="login_acount_text">账户登录</div>-->
+            <!--<div class="loginInput " >-->
+                    <!--<span class="loginInputIcon ">-->
+                        <!--<span class=" glyphicon glyphicon-user"></span>-->
+                    <!--</span>-->
+                <!--<input v-model="user.name" placeholder="手机/会员名/邮箱" type="text">-->
+            <!--</div>-->
+
+            <!--<div class="loginInput " >-->
+                    <!--<span class="loginInputIcon ">-->
+                        <!--<span class=" glyphicon glyphicon-lock"></span>-->
+                    <!--</span>-->
+                <!--<input v-model="user.password" type="password" placeholder="密码">-->
+            <!--</div>-->
+            <!--<span class="text-danger">不要输入真实的天猫账号密码</span><br><br>-->
+            <!--<div>-->
+                <!--<a class="notImplementLink" href="#nowhere">忘记登录密码</a>-->
+                <!--<a href="register" class="pull-right">免费注册</a>-->
+            <!--</div>-->
+            <!--<div style="margin-top:20px">-->
+                <!--<button class="btn btn-block redButton" type="button" @click="login">登录</button>-->
+            <!--</div>-->
+            <!---->
+            <!---->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div id="login">
+        <div class="container-fluid" style="background-image:url('img/background2.jpg');  background-size:cover; height:100vh;">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <!-- this div for spacing-->
                 </div>
-            </div>
+                <div class="col-lg-6 col-md-6 col-sm-12  text-light" style=" background-color:rgba(44 48, 49, 0.39); margin-top:20vh;  border-radius:3vh; padding:5vh;">
+                    <form  >
+                        <h1 class="text-center" style="font-family:'Lobster', cursive;">登录</h1>
+                        <br>
+                        <div class="form-group" >
+                            <h5>用户名</h5>
 
-            <div class="login_acount_text">账户登录</div>
-            <div class="loginInput " >
-                    <span class="loginInputIcon ">
-                        <span class=" glyphicon glyphicon-user"></span>
-                    </span>
-                <input v-model="user.name" placeholder="手机/会员名/邮箱" type="text">
-            </div>
+                            <input v-model="user.name" type="text" placeholder="请输入用户名"  required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <h5>密码</h5>
+                            <input v-model="user.password" type="password" placeholder="请输入密码" required class="form-control">
 
-            <div class="loginInput " >
-                    <span class="loginInputIcon ">
-                        <span class=" glyphicon glyphicon-lock"></span>
-                    </span>
-                <input v-model="user.password" type="password" placeholder="密码">
-            </div>
-            <span class="text-danger">不要输入真实的天猫账号密码</span><br><br>
-            <div>
-                <a class="notImplementLink" href="#nowhere">忘记登录密码</a>
-                <a href="register" class="pull-right">免费注册</a>
-            </div>
-            <div style="margin-top:20px">
-                <button class="btn btn-block redButton" type="button" @click="login">登录</button>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-outline-light" @click="login">登录</button>
+
+                        </div>
+                        <a class="text-light" style="float:right;"href="main1.html"><b>返回</b></a>
+                    </form>
+                </div>
+                <div class="col-lg-3 col-md-3 ">
+                    <!-- this div for spacing-->
+                </div>
             </div>
         </div>
     </div>
+
+
 </div>

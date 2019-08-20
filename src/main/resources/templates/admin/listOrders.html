@@ -10,6 +10,7 @@
             uri:'orders',
             pagination:{},
             beans: []
+  //          bean:{id:'0',cid:'',rid:'',ordertime:'',checkintime:'',checkouttime:'',totalMoney:'',status:'',remarks:''}
         };
 
         //ViewModel
@@ -27,6 +28,36 @@
                         vue.beans = response.data.content	;
                     });
                 },
+
+
+                // add
+//                add:function () {
+//                    if(!checkEmpty(this.bean.customer.name, "顾客姓名"))
+//                        return;
+//                    if(!checkEmpty(this.bean.sex, "顾客性别"))
+//                        return;
+//                    if(!checkNumber(this.bean.telphone, "顾客电话"))
+//                        return;
+//                    if(!checkEmpty(this.bean.document, "顾客证件"))
+//                        return;
+//                    if(!checkNumber(this.bean.documentnumber, "证件号码"))
+//                        return;
+//                    if(!checkEmpty(this.bean.lvxingtuan, "旅行团"))
+//                        return;
+//
+//                    var url = this.uri;
+//                    axios.post(url,this.bean).then(function(response){
+//                        vue.list(0);
+//                        vue.bean = {id:'0',cid:'',rid:'',ordertime:'',checkintime:'',checkouttime:'',totalMoney:'',status:'',remarks:''}
+//                    });
+//                },
+//
+
+                //delete
+
+
+
+
                 jump: function(page){
                     jump(page,vue); //定义在adminHeader.html 中
                 },
@@ -134,6 +165,62 @@
         </table>
     </div>
     <div th:replace="include/admin/adminPage::html" ></div>
+
+
+    <!--<div class="panel panel-warning addDiv">-->
+        <!--<div class="panel-heading">新增订单</div>-->
+        <!--<div class="panel-body">-->
+            <!--<table class="addTable">-->
+                <!--<tr>-->
+                    <!--<td>顾客姓名</td>-->
+                    <!--<td><input  @keyup.enter="add" v-model.trim="bean.customer.name" type="text" class="form-control"></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>预订房间</td>-->
+                    <!--<td><input  @keyup.enter="add" v-model.trim="bean.room.roomnum" type="text" class="form-control"></td>-->
+                <!--</tr>-->
+
+                <!--<tr>-->
+                    <!--<td>预订时间</td>-->
+                    <!--<td><input  @keyup.enter="add" v-model.trim="bean.ordertime" type="text" class="form-control"></td>-->
+                <!--</tr>-->
+
+                <!--<tr>-->
+                    <!--<td>入住时间</td>-->
+                    <!--<td><input  @keyup.enter="add" v-model.trim="bean.checkintime" type="text" class="form-control"></td>-->
+                <!--</tr>-->
+
+                <!--<tr>-->
+                    <!--<td>离开时间 </td>-->
+                    <!--<td><input  @keyup.enter="add" v-model.trim="bean.checkouttimme" type="text" class="form-control"></td>-->
+                <!--</tr>-->
+
+                <!--<tr>-->
+                    <!--<td>总额</td>-->
+                    <!--<td><input  @keyup.enter="add" v-model.trim="bean.totalmoney" type="text" class="form-control"></td>-->
+                <!--</tr>-->
+
+                <!--<tr>-->
+                    <!--<td>状态</td>-->
+                    <!--<td><input  @keyup.enter="add" v-model.trim="bean.status" type="text" class="form-control"></td>-->
+                <!--</tr>-->
+
+                <!--<tr>-->
+                    <!--<td>备注</td>-->
+                    <!--<td><input  @keyup.enter="add" v-model.trim="bean.remarks" type="text" class="form-control"></td>-->
+                <!--</tr>-->
+
+                <!--<tr class="submitTR">-->
+                    <!--<td colspan="2" align="center">-->
+                        <!--<input type="hidden" name="id"   v-model.trim="bean.id" >-->
+                        <!--<a href="#nowhere" class="btn btn-success" @click="add">提 交</a>-->
+                    <!--</td>-->
+                <!--</tr>-->
+            <!--</table>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
 </div>
 <div th:replace="include/admin/adminFooter::html" ></div>
 </body>

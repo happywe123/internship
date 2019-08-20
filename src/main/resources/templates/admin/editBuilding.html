@@ -23,6 +23,7 @@
             methods: {
                 get:function(){
                     var id = getUrlParms("id");
+                    //console.log(id);
                     var url = this.uri+"/"+id;
                     axios.get(url).then(function(response) {
                         vue.bean = response.data;
