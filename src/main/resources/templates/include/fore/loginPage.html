@@ -32,7 +32,7 @@
                         axios.post(url,this.user).then(function(response) {
                             var result = response.data;
                             if(result.code==0){
-                                location.href="admin_type_list";
+                                location.href="adminPage";
                             }
                             else{
                                 $("span.errorMessage").html(result.message);
