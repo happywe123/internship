@@ -1,0 +1,98 @@
+<div class="navitagorDiv" th:fragment="html">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+        <!--<img style="margin-left:10px;margin-right:0px" class="pull-left" src="img/site/tmallbuy.png" height="45px">
+        -->
+
+        <!--<a class="navbar-brand" href="#">英奇酒店管理系统</a>-->
+        <!--<a class="navbar-brand" href="admin_type_list">房间类型</a>-->
+        <!--<a class="navbar-brand" href="admin_room_list">房间管理</a>-->
+        <!--<a class="navbar-brand" href="admin_customer_list">顾客信息</a>-->
+        <!--<a class="navbar-brand" href="admin_orders_list">订单管理</a>-->
+        <!--<a class="navbar-brand" href="admin_card_list">卡片管理</a>-->
+        <!--&lt;!&ndash;<a class="navbar-brand" href="admin_order_list">流水记录</a>&ndash;&gt;-->
+
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="adminPage">酒店智能门锁管理系统</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <!--<li class="active"><a href="main1.html">首页</a></li>-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            预定 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" data-toggle="modal" data-target="#myModal">预定</a></li>
+                            <li><a href="#">预定信息管理</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            接待 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">预定入住</a></li>
+                            <li><a href="zhijieruzhu">直接入住</a></li>
+                            <li><a href="changeRoom">换房</a></li>
+                            <li><a href="renewal">续房</a></li>
+                            <li><a href=checkout>退房</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            顾客 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">顾客信息管理</a></li>
+                            <li><a href="#">在住客人列表</a></li>
+                            <li><a href="#">余额查询</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            卡片 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">制卡</a></li>
+                            <li><a href="#">卡片信息更改</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            财务 <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">订单查询</a></li>
+                            <li><a href="#">账单查询</a></li>
+                            <li><a href="#">财务报表</a></li>
+
+                        </ul>
+                    </li>
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            报表 <b class="caret"></b>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="#">开卡记录</a></li>
+                            <li><a href="#">开门记录</a></li>
+                            <li><a href="#">客人记录</a></li>
+                            <li><a href="#">挂失补办记录</a></li>
+                        </ul>
+
+                    </li>
+
+                </ul>
+                <ul  th:if="${null!=session.user}" class="nav  navbar-nav navbar-right">
+                    <li><a href="#"  th:text="${session.user.category}" ></a></li>
+                    <li><a href="logout"><span class="glyphicon glyphicon-user"></span> 注销</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>

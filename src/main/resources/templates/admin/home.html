@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<head>-->
+    <!--<meta charset="utf-8">-->
+    <!--<title>Bootstrap 实例 - 倒置的导航栏</title>-->
+    <!--<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!--<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>-->
+    <!--<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<!--</head>-->
+<head th:include="include/admin/adminHeader::html('首页')" ></head>
+<body>
+
+<div th:replace="include/admin/testNavigator::html" ></div>
+
+
+<div class="container-fluid" style="margin-left:10px;margin-right:10px">
+                <div class="row">
+                    <div class="col-lg-1 col-md-1 col-sm-1">
+                        <div style=" margin-top:100px">
+                            <ul class="nav nav-pills nav-stacked text-center" >
+                                <li class="active"><a href="#">读卡</a></li>
+                                <li class="active"><a href="#">注销</a></li>
+                                <li class="active"><a href="#">挂失</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--<div class="col-lg-1 col-md-1 col-sm-1">-->
+
+                    <!--</div>-->
+
+                    <div class="col-lg-10 col-md-10 col-sm-10">
+
+
+
+                        <!--  接入 for 循环，展示楼栋信息--->
+                        <form class="form-inline" role="form" style="margin-bottom: 20px">
+                            <label>楼栋选择</label>
+                            <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </form>
+
+
+                        <!-- 房间展示模块-->
+                        <div class="row  ">
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <div class="card" style="width:100%;">
+                                    <img src="../img/background2.jpg" width="100%" alt="">
+                                    <div class="card-body">
+                                        <h4 style="margin-left:1vw;">Italian</h4>
+                                        <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                                        <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                                        <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <div class="card" style="width:100%">
+                                    <img src="../img/background2.jpg" width="100%" alt="">
+                                    <div class="card-body">
+                                        <h4 style="margin-left:1vw;">Italian</h4>
+                                        <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                                        <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                                        <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>200</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <div class="card" style="width:100%">
+                                    <img src="../img/background2.jpg" width="100%" alt="">
+                                    <div class="card-body">
+                                        <h4 style="margin-left:1vw;">Italian</h4>
+                                        <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                                        <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>500</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <div class="card" style="width:100%">
+                                    <img src="../img/background2.jpg" width="100%" alt="">
+                                    <div class="card-body">
+                                        <h4 style="margin-left:1vw;">Indian</h4>
+                                        <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                                        <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                                        <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>200</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <div class="card" style="width:100%">
+                                    <img src="../img/background2.jpg" width="100%" alt="">
+                                    <div class="card-body">
+                                        <h4 style="margin-left:1vw;">Indian</h4>
+                                        <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                                        <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                                        <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>300</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <div class="card" style="width:100%">
+                                    <img src="../img/background2.jpg" width="100%" alt="">
+                                    <div class="card-body">
+                                        <h4 style="margin-left:1vw;">Indian</h4>
+                                        <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                                        <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                                        <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--                解释-->
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <div class="card" style="width:100%">
+                                    <img src="../img/background2.jpg" width="100%" alt="">
+                                    <div class="card-body">
+                                        <h4 style="margin-left:1vw;">Indian</h4>
+                                        <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                                        <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                                        <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                <div class="card" style="width:100%">
+                                    <img src="../img/background2.jpg" width="100%" alt="">
+                                    <div class="card-body">
+                                        <h4 style="margin-left:1vw;">Indian</h4>
+                                        <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star" style="color:yellow;"></i>
+                                        <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                                        <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                                        <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                                    </div>
+                                </div>
+                            </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="card" style="width:100%">
+                        <img src="../img/background2.jpg" width="100%" alt="">
+                        <div class="card-body">
+                            <h4 style="margin-left:1vw;">Indian</h4>
+                            <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                            <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                            <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="card" style="width:100%">
+                        <img src="../img/background2.jpg" width="100%" alt="">
+                        <div class="card-body">
+                            <h4 style="margin-left:1vw;">Indian</h4>
+                            <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                            <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                            <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="card" style="width:100%">
+                        <img src="../img/background2.jpg" width="100%" alt="">
+                        <div class="card-body">
+                            <h4 style="margin-left:1vw;">Indian</h4>
+                            <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                            <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                            <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="card" style="width:100%">
+                        <img src="../img/background2.jpg" width="100%" alt="">
+                        <div class="card-body">
+                            <h4 style="margin-left:1vw;">Indian</h4>
+                            <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                            <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                            <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="card" style="width:100%">
+                        <img src="../img/background2.jpg" width="100%" alt="">
+                        <div class="card-body">
+                            <h4 style="margin-left:1vw;">Indian</h4>
+                            <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                            <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                            <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="card" style="width:100%">
+                        <img src="../img/background2.jpg" width="100%" alt="">
+                        <div class="card-body">
+                            <h4 style="margin-left:1vw;">Indian</h4>
+                            <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                            <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                            <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="card" style="width:100%">
+                        <img src="../img/background2.jpg" width="100%" alt="">
+                        <div class="card-body">
+                            <h4 style="margin-left:1vw;">Indian</h4>
+                            <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                            <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                            <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="card" style="width:100%">
+                        <img src="../img/background2.jpg" width="100%" alt="">
+                        <div class="card-body">
+                            <h4 style="margin-left:1vw;">Indian</h4>
+                            <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                            <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                            <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="card" style="width:100%">
+                        <img src="../img/background2.jpg" width="100%" alt="">
+                        <div class="card-body">
+                            <h4 style="margin-left:1vw;">Indian</h4>
+                            <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                            <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                            <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="card" style="width:100%">
+                        <img src="../img/background2.jpg" width="100%" alt="">
+                        <div class="card-body">
+                            <h4 style="margin-left:1vw;">Indian</h4>
+                            <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                            <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                            <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="card" style="width:100%">
+                        <img src="../img/background2.jpg" width="100%" alt="">
+                        <div class="card-body">
+                            <h4 style="margin-left:1vw;">Indian</h4>
+                            <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                            <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                            <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="card" style="width:100%">
+                        <img src="../img/background2.jpg" width="100%" alt="">
+                        <div class="card-body">
+                            <h4 style="margin-left:1vw;">Indian</h4>
+                            <i class="fa fa-star" style="color:yellow; margin-left:1vw;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star" style="color:yellow;"></i>
+                            <i class="fa fa-star-half-o" style="color:yellow;"></i><br>
+                            <input style="margin-left:1vw;"type="checkbox" name="" value="Add categoires">Add Cart
+                            <p style="margin-left:1vw;"> Price:  <i class="fa fa-inr" aria-hidden="true"></i>400</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+                    <div class="jumbotron text-center" style="margin-bottom:0">
+                    <h2>酒店智能门锁管理系统</h2>
+                       <p>底部内容</p>
+                    </div>
+
+<!--跳转界面1-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">直接退房</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" style="padding:10px 5px 15px 20px">
+
+                    <div class="form-group">
+                        <label for="name">请输入续租天数</label>
+                        <input type="text" class="form-control" id="name" placeholder="请输入续租天数">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">选择退房时间</label>
+                        <input type="text" class="form-control" id="telephone" placeholder="请输入名称">
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">-->
+<!--                    &times;-->
+<!--                </button>-->
+<!--                <h4 class="modal-title" id="myModalLabel">-->
+<!--                    确认删除吗？-->
+<!--                </h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                {{message}}-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-default" data-dismiss="modal">取消-->
+<!--                </button>-->
+<!--                <button type="button" class="btn btn-primary">-->
+<!--                    确认-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+<!--    </div>&lt;!&ndash; /.modal &ndash;&gt;-->
+<!--</div>-->
+<!--跳转界面1-->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+
+</body>
+</html>
+</body>
+</html>
