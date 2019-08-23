@@ -32,6 +32,7 @@ public class RoomController {
 
     @PostMapping("/rooms")
     public Object add(@RequestBody Room bean){
+//        System.out.println(bean.getBuilding().getId());
         roomService.add(bean);
         return bean;
     }

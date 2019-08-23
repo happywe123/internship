@@ -1,7 +1,7 @@
 package com.how2java.tmall.service;
 
 import com.how2java.tmall.dao.RoomDAO;
-import com.how2java.tmall.pojo.Hotel;
+//import com.how2java.tmall.pojo.Hotel;
 import com.how2java.tmall.pojo.Room;
 import com.how2java.tmall.util.Page4Navigator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +32,10 @@ public class RoomService {
     }
 
     public void add(Room bean){
+//        System.out.println(bean.getId());
+//        System.out.println(bean.getBuilding().getId());
+//        System.out.println(bean.getType().getId());
+//        System.out.println(bean.getBuilding());
         roomDAO.save(bean);
     }
 

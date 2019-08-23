@@ -149,19 +149,16 @@ public class AdminPageController {
 	    return "admin/editCard";
     }
 
+    // 楼栋信息的展示页
+	@GetMapping(value="/admin_building_list")
+	public String listBuildings(){
+		return "admin/listBuilding";
+	}
 
-
-
-//    // 楼栋信息的展示页
-//	@GetMapping(value="/admin_building_list")
-//	public String listBuildings(){
-//		return "admin/listBuilding";
-//	}
-//
-//	@GetMapping(value="/admin_building_edit")
-//    public String editBuildings(){
-//	    return "admin/editBuilding";
-//    }
+	@GetMapping(value="/admin_building_edit")
+    public String editBuildings(){
+	    return "admin/editBuilding";
+    }
 
 
 }

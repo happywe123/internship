@@ -13,9 +13,9 @@ public class Room {
     @Column(name = "id")
     int id;
 
-//    @ManyToOne
-//    @JoinColumn(name="bid")
-//    private Building building;
+    @ManyToOne
+    @JoinColumn(name="bid")
+    private Building building;
 
     @ManyToOne
     @JoinColumn(name="tid")
@@ -43,13 +43,13 @@ public class Room {
         this.id = id;
     }
 
-//    public Building getBuilding() {
-//        return building;
-//    }
-//
-//    public void setBuilding(Building building) {
-//        this.building = building;
-//    }
+    public Building getBuilding() {
+        return building;
+    }
+
+    public void setBuilding(Building building) {
+        this.building = building;
+    }
 
     public Type getType() {
         return type;

@@ -6,12 +6,16 @@
 <div th:replace="include/admin/adminNavigator::html" ></div>
 <script>
     $(function(){
+       // var cbd = bd;
         var data4Vue = {
             uri:'rooms',
             beans: [],
-            bean: {id:0,tid:'','roomnum':9999,'state':'空净房',remarks:''},
+            bean: {id:0,building:{id:0},type:{id:0},'roomnum':9999,'state':'空净房',remarks:''},
             pagination:{},
-           // building:''
+            building:'',
+            type:'',
+            bd:'',
+            td:''
         };
 
         //ViewModel
@@ -21,34 +25,66 @@
             mounted:function(){ //mounted　表示这个 Vue 对象加载成功了
                 this.list(0);
             },
+
             methods: {
                 list:function(start){
                     var url =  this.uri+ "?start="+start;
                     axios.get(url).then(function(response) {
                         vue.pagination = response.data;
                         vue.beans = response.data.content;
-                       // vue.building = vue.bean.building;
-                        //console.log(beans);
                     });
                 },
 
+                // 参考 tmall, 首先获得 building 的信息
+                getBuilding:function (bd) {
+                   // console.log( "本函数调用" + bd);
+                    var url = "buildings/" + bd;
+                    axios.get(url).then(function(response){
+                        vue.building = response.data;
+                        console.log("楼栋本地函数：" + vue.building.id);
+                        console.log("楼栋本地函数：" + vue.building.buildingname);
+//                        console.log("本地函数：" + vue.building.remarks);
+                    })
+                },
+
+                getType:function (td) {
+                    // console.log( "本函数调用" + bd);
+                    var url = "typies/" + td;
+                    axios.get(url).then(function(response){
+                        vue.type = response.data;
+                        console.log("房间类型本地函数：" + vue.type.id);
+//                        console.log("本地函数：" + vue.building.buildingname);
+//                        console.log("本地函数：" + vue.building.remarks);
+                    })
+                },
+
                 // add 函数
-                add: function () {
+                add: function (bd,td) {
+                    this.getBuilding(bd);
+                    this.getType(td);
 //                    if(!checkNumber(this.bean.bid, "房间所属楼栋"))
 //                        return;
-                    if (!checkNumber(this.bean.tid, "房间类型"))
-                        return;
+//                    if (!checkNumber(this.bean.tid, "房间类型"))
+//                        return;
                     if (!checkNumber(this.bean.roomnum, "房间门牌号"))
                         return;
                     if (!checkEmpty(this.bean.state, "房间状态"))
                         return;
 
+                    // 调用成功
+//                    console.log("当前楼栋的 id:" + this.building.id);
+//                    console.log("直接获取当前的 bd :" + bd);
+
                     var url = this.uri;
-                   // console.log(vue.bean.id);
+                    this.bean.building.id = bd;
+//                    console.log("赋值后的 id" + this.bean.building.id);
+//                    console.log("查看当前房间的房号" + this.bean.roomnum);
+
+                    this.bean.type.id = td;
+
                     axios.post(url,this.bean).then(function(response){
-                       // console.log(vue.bean.id);
                         vue.list(0);
-                        vue.bean =  {id:0,tid:'','roomnum':9999,'state':'空净房',remarks:''}
+                        vue.bean =  {id:0,building:{id:0},type:{id:0},'roomnum':9999,'state':'空净房',remarks:''}
                     });
                 },
 
@@ -88,7 +124,7 @@
             <thead>
             <tr class="success">
                 <th>ID</th>
-                <!--<th>房间所属楼栋</th>-->
+                <th>房间所属楼栋</th>
                 <th>房间门牌号</th>
                 <th>房间类型</th>
                 <th>房间单价</th>
@@ -103,10 +139,10 @@
             <tr v-for="bean in beans ">
                 <td>{{bean.id}}</td>
 
-                <!--<td>-->
-                   <!--&lt;!&ndash;{{building.name}}&ndash;&gt;-->
-                    <!--{{bean.building.buildingname}} # {{bean.building.id}}-->
-                <!--</td>-->
+                <td>
+                   <!--{{building.name}}-->
+                    {{bean.building.buildingname}} # {{bean.building.id}}
+                </td>
 
                 <td>
                     {{bean.roomnum}}
@@ -165,14 +201,21 @@
         <div class="panel-heading">新增类型</div>
         <div class="panel-body">
             <table class="addTable">
-                <!--<tr>-->
-                    <!--<td>房间所属楼栋</td>-->
-                    <!--<td><input  @keyup.enter="add" v-model.trim="bean.bid" type="text" class="form-control"></td>-->
-                <!--</tr>-->
+                <tr>
+                    <td>房间所属楼栋</td>
+                    <!--<td><input  @keyup.enter="getBuilding(bid)" v-model.trim="bid" type="text" class="form-control"></td>-->
+                    <!--<div>-->
+                        <td><input  type="text"   class="form-control" v-model="bd"></td>
+                    <p> {{bd}}</p>
+                        <!--<div v-if="bd > 0" ></div>-->
+                    <!--</div>-->
+
+                </tr>
 
                 <tr>
                     <td>房间类型</td>
-                    <td><input  @keyup.enter="add" v-model.trim="bean.tid" type="text" class="form-control"></td>
+                    <td><input    type="text" class="form-control" v-model = "td"></td>
+                    <p>{{td}}</p>
                 </tr>
 
                 <tr>
@@ -192,7 +235,7 @@
 
                 <tr class="submitTR">
                     <td colspan="2" align="center">
-                        <a href="#nowhere"  @click="add" class="btn btn-success">提交</a>
+                        <a href="#nowhere"  @click="add(bd,td)" class="btn btn-success">提交</a>
                     </td>
                 </tr>
             </table>
