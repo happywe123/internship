@@ -4,6 +4,8 @@
 <head th:include="include/admin/adminHeader::html('房间类型')" ></head>
 <body>
 <div th:replace="include/admin/adminNavigator::html" ></div>
+
+
 <script>
     $(function(){
         var data4Vue = {
@@ -69,10 +71,13 @@
     });
 
 </script>
+
+
 <div id="workingArea" >
     <h1 class="label label-info" >房间类型</h1>
     <br>
     <br>
+
     <div class="listDataTableDiv">
         <table class="table table-striped table-bordered table-hover  table-condensed">
             <thead>
@@ -131,6 +136,7 @@
             </tbody>
         </table>
     </div>
+
     <div th:replace="include/admin/adminPage::html" ></div>
 
     <div class="panel panel-warning addDiv">
@@ -164,7 +170,9 @@
             </table>
         </div>
     </div>
+
 </div>
+
 <div th:replace="include/admin/adminFooter::html" ></div>
 </body>
 </html>

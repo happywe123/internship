@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 public class BuildingController {
@@ -44,5 +45,13 @@ public class BuildingController {
         Building bean = buildingService.get(id);
         return bean;
     }
+
+    @GetMapping("/testbuilding")
+    public List<Building> getall(){
+        List<Building>  list = buildingService.getAll();
+        return list;
+
+    }
+
 
 }

@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -35,7 +37,24 @@ public class UserService {
         return new Page4Navigator<>(pageFromJPA,navigatePages);
     }
 
-    public void add(User user) {
-        userDAO.save(user);
+    public List<User> list() {
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        return userDAO.findAll(sort);
+    }
+
+    public void add(User bean) {
+        userDAO.save(bean);
+    }
+
+    public void delete(int id) {
+        userDAO.delete(id);
+    }
+
+    public User get(int id) {
+        User c= userDAO.findOne(id);
+        return c;
+    }
+    public void update(User bean) {
+        userDAO.save(bean);
     }
 }

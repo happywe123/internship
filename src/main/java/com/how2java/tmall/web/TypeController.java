@@ -3,11 +3,13 @@ package com.how2java.tmall.web;
 import com.how2java.tmall.pojo.Type;
 import com.how2java.tmall.service.TypeService;
 import com.how2java.tmall.util.Page4Navigator;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
- 
+
 @RestController
 public class TypeController {
 	@Autowired
@@ -44,6 +46,16 @@ public class TypeController {
 		typeService.update(bean);
 		return bean;
 	}
+
+
+	// 获取所有房间类型的名称
+
+	@GetMapping("/alltypies")
+	public List<String> getAllNameForId(){
+		List<String> res = typeService.getAllTypeName();
+		return res;
+	}
+
 
 }
 

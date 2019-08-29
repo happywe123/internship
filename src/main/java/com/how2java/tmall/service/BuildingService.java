@@ -46,4 +46,11 @@ public class BuildingService {
         buildingDAO.save(card);
     }
 
+
+    public  List<Building> getAll(){
+        List<Building> list = buildingDAO.findAll();
+        return list;
+    }
+
+
 }

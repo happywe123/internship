@@ -20,7 +20,7 @@ public class AdminPageController {
 //    }
 
 
-    // 主页面，即展示页
+    // 后端主页面，即展示页
 	@GetMapping(value="/")
 	public String index(){
 		return "redirect:adminPage";
@@ -31,19 +31,40 @@ public class AdminPageController {
         return "admin/home";
     }
 
-
     // 登录页面
 	@GetMapping(value="/login_page")
 	public String loginpage(){
 		return "admin/login";
 	}
 
+	//顶部导航栏-后台配置页面跳转
+    @GetMapping(value="/admin_backstage")
+    public String adminBackStage(){
+	    return "fore/backstage";
+    }
+
 
 	// 导航栏跳转到直接入住界面
     @GetMapping(value="/zhijieruzhu")
     public String zhiJie(){
-	    return "fore/ruzhu";
+	    return "in/information";
     }
+
+    @GetMapping(value="/information")
+    public String information(){
+        return "in/information";
+    }
+
+    @GetMapping("/selectroom")
+    public String selectRoom(){
+        return "in/selectroom";
+    }
+
+    @GetMapping("/money")
+    public String money(){
+        return "in/money";
+    }
+
 
     // 办理退房
     @GetMapping(value="/checkout")
@@ -65,7 +86,24 @@ public class AdminPageController {
     }
 
 
+    // 图表类，用于对后台数据的可视化展示
+    @GetMapping(value="roomEcharts")
+    public String roomShow(){
+        return "fore/roomEcharts";
+    }
 
+    // 员工树形图
+    @GetMapping(value="userTree")
+    public String userShow(){
+        return "fore/userTree";
+    }
+
+
+    // 测试 Vue 路由转换
+    @GetMapping(value="test")
+    public String test(){
+        return "fore/xinwen2";
+    }
 
 
     // 退出当前登录界面
