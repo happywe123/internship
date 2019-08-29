@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+
+<!--引入头部文件-->
+<!--<head>-->
+    <!--<meta charset="utf-8">-->
+    <!--<title>Bootstrap 实例 - 倒置的导航栏</title>-->
+    <!--<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!--<script src="../jquery/jquery.min.js"></script>-->
+    <!--<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>-->
+    <!--<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <!--<script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>-->
+    <!--<script src="https://cdn.staticfile.org/vue-router/2.7.0/vue-router.min.js"></script>-->
+<!--</head>-->
+
+<head th:include="include/admin/adminHeader::html('直接入住')" ></head>
+
+<body>
+
+<!-- 引入顶部导航栏 -->
+<div th:replace="include/admin/testNavigator::html"></div>
+<br>
+<br>
+<br>
+<br>
+
+<!--显示面板的主要内容-->
+<div id="ruzhu">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <ul  class=" nav nav-pills nav-stacked">
+                    <li class="active"><a href="../information.html">入住</a></li>
+                    <li><a href="../selectroom.html">选房</a></li>
+                    <li><a href="../money.html">结账</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-10 col-md-10 col-sm-10" >
+
+                        <form class="col-md-7">
+                            <h4 class="page-header">个人信息</h4>
+
+                            <div class="form-group">
+                                <label> 姓名 </label>
+                                <input type="text"   @keyup.enter="add" v-model.trim="bean.name"   class="form-control" placeholder="请输入姓名">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="form-group">
+                                        <label >性别</label>
+                                        <select  @keyup.enter="add" v-model.trim ="bean.sex" class="form-control" >
+                                            <option value="男">男</option>
+                                            <option value="女">女</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-8 col-md-8">
+                                    <div class="form-group">
+                                        <label >电话号码</label>
+                                        <input  @keyup.enter="add" v-model.trim ="bean.telphone"  type="text" class="form-control"  placeholder="请输入电话号码">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label >证件类型</label>
+                                <select  @keyup.enter="add" v-model.trim = "bean.document" class="form-control" >
+                                    <option value="身份证">身份证</option>
+                                    <option value="驾驶证">驾驶证</option>
+                                    <option value="护照">护照</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>证件号码</label>
+                                <input  @keyup.enter="add" v-model.trim ="bean.documentnumber" type="text" class="form-control"  placeholder="请输入证件号码">
+                            </div>
+
+                            <div class="form-group">
+                                <label >入住天数</label>
+                                <input   type="text" class="form-control"  placeholder="天数">
+                            </div>
+
+                            <div class="text-center">
+                                <a type="submit" href="'selectroom?id=' + bean.id" @click="add"  class="btn btn-default">提交</a>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<!--主要函数-->
+<script>
+    var vue= new Vue({
+        el: '#ruzhu',
+        data: {
+            uri:'customers',
+            bean:{id:0, name:'', sex:'', telphone:'', document:'', documentnumber:''},
+            beans:[],
+        },
+        methods: {
+            add:function () {
+                if(!checkEmpty(this.bean.name, "卡片类型"))
+                    return;
+                if(!checkEmpty(this.bean.sex, "卡片状态"))
+                    return;
+                if(!checkNumber(this.bean.telphone,"电话"))
+                    return;
+                if(!checkEmpty(this.bean.document,"证件"))
+                    return;
+                if(!checkEmpty(this.bean.documentnumber,"证件号码"))
+                    return;
+
+                var url = this.uri;
+                console.log(url);
+                axios.post(url,this.bean).then(function (response) {
+                    vue.bean = {id:0, name:'', sex:'', telphone:'', document:'', documentnumber:''};
+                    console.log(vue.bean);
+                });
+            },
+        }
+    });
+
+</script>
+
+</body>
+</html>

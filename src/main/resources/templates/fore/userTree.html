@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<!--<head>-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <!--<meta charset="utf-8">-->
+    <!--<title>login</title>-->
+    <!--<link rel="stylesheet" href="../css/bootstrap.min.css">-->
+    <!--<script src="../vue/vue.min.js"></script>-->
+    <!--<script src="../chart/echarts.min.js"></script>-->
+<!--</head>-->
+
+<head th:include="include/admin/adminHeader::html('房间图表展示')" ></head>
+<body>
+
+<!--接头部导航栏-->
+<div th:replace="include/admin/testNavigator::html" ></div>
+
+
+<div id="main">
+    <div id="myChart" style="width: 600px;height:400px;"></div>
+</div>
+<script type="text/javascript">
+    var vm= new Vue({
+        el: '#main',
+        data() {
+            return {
+                msg: 'Welcome to Your Vue.js App'
+            }
+        },
+        mounted() {
+            this.drawLine();
+        },
+        methods: {
+            drawLine() {
+                // 基于准备好的dom，初始化echarts实例
+                let myChart = echarts.init(document.getElementById('myChart'))
+                // 绘制图表
+                myChart.setOption({
+                    title : {
+                        text: '树图',
+                        // subtext: '虚构数据'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        triggerOn: 'mousemove'
+                    },
+                    toolbox: {
+                        show : true,
+                        feature : {
+                            mark : {show: true},
+                            dataView : {show: true, readOnly: false},
+                            restore : {show: true},
+                            saveAsImage : {show: true}
+                        }
+                    },
+                    calculable : false,
+
+                    series : [
+                        {
+
+                            name:'树图',
+                            type:'tree',
+                            orient: 'horizontal',  // vertical horizontal
+                            top: '1%',
+                            left: '7%',
+                            bottom: '1%',
+                            right: '10%',
+
+                            symbolSize: 10,
+
+                            label: {
+                                normal: {
+                                    position: 'left',
+                                    verticalAlign: 'middle',
+                                    align: 'right',
+                                    fontSize: 12
+                                }
+                            },
+
+                            leaves: {
+                                label: {
+                                    normal: {
+                                        position: 'right',
+                                        verticalAlign: 'middle',
+                                        align: 'left'
+                                    }
+                                }
+                            },
+
+                            expandAndCollapse: true,
+                            animationDuration: 550,
+                            animationDurationUpdate: 750,
+
+
+
+                            data: [
+                                {
+                                    name: '员工',
+                                    value: 6,
+                                    children: [
+                                        {
+                                            name: '节点1',
+                                            value: 4,
+                                            children: [
+                                                {
+                                                    name: '叶子节点1',
+                                                    value: 4
+                                                },
+                                                {
+                                                    name: '叶子节点2',
+                                                    value: 4
+                                                },
+                                                {
+                                                    name: '叶子节点3',
+                                                    value: 2
+                                                },
+                                                {
+                                                    name: '叶子节点4',
+                                                    value: 2
+                                                },
+                                                {
+                                                    name: '叶子节点5',
+                                                    value: 2
+                                                },
+                                                {
+                                                    name: '叶子节点6',
+                                                    value: 4
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            name: '节点2',
+                                            value: 4,
+                                            children: [{
+                                                name: '叶子节点7',
+                                                value: 4
+                                            },
+                                                {
+                                                    name: '叶子节点8',
+                                                    value: 4
+                                                }]
+                                        },
+                                        {
+                                            name: '节点3',
+                                            value: 1,
+                                            children: [
+                                                {
+                                                    name: '叶子节点9',
+                                                    value: 4
+                                                },
+                                                {
+                                                    name: '叶子节点10',
+                                                    value: 4
+                                                },
+                                                {
+                                                    name: '叶子节点11',
+                                                    value: 2
+                                                },
+                                                {
+                                                    name: '叶子节点12',
+                                                    value: 2
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                });
+
+//duide
+
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

@@ -2,32 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbfa80d9-2b4e-4230-8633-d2989e02b704" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/templates/fore/ruzhu.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/how2java/tmall/service/TypeService.class" afterPath="$PROJECT_DIR$/target/classes/com/how2java/tmall/service/TypeService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/how2java/tmall/web/AdminPageController.class" afterPath="$PROJECT_DIR$/target/classes/com/how2java/tmall/web/AdminPageController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/how2java/tmall/web/TypeController.class" afterPath="$PROJECT_DIR$/target/classes/com/how2java/tmall/web/TypeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/dao/BuildingDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/dao/BuildingDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/dao/RoomDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/dao/RoomDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/service/BuildingService.java" afterPath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/service/BuildingService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/service/RoomService.java" afterPath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/service/RoomService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/service/TypeService.java" afterPath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/service/TypeService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/web/AdminPageController.java" afterPath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/web/AdminPageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/web/BuildingController.java" afterPath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/web/BuildingController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/web/RoomController.java" afterPath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/web/RoomController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/web/TypeController.java" afterPath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/web/TypeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/listCard.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/listCard.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/listType.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/listType.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fore/changeroom.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fore/changeroom.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fore/checkout.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fore/checkout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fore/renewal.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fore/renewal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/include/admin/adminHeader.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/include/admin/adminHeader.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/include/admin/testNavigator.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/include/admin/testNavigator.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/admin/listType.html" afterPath="$PROJECT_DIR$/target/classes/templates/admin/listType.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/include/admin/adminHeader.html" afterPath="$PROJECT_DIR$/target/classes/templates/include/admin/adminHeader.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/web/UsertController.java" afterPath="$PROJECT_DIR$/src/main/java/com/how2java/tmall/web/UserController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -716,7 +691,7 @@
       <workItem from="1566780280876" duration="17696000" />
       <workItem from="1566865754669" duration="26742000" />
       <workItem from="1566953158433" duration="25111000" />
-      <workItem from="1567039045191" duration="13402000" />
+      <workItem from="1567039045191" duration="13503000" />
     </task>
     <task id="LOCAL-00001" summary="the every table can be query">
       <created>1565343092156</created>
@@ -809,7 +784,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566522296875</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="add some fore pages from my colleges">
+      <created>1567058017988</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1567058017988</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -842,7 +824,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="307035000" />
+    <option name="totallyTimeSpent" value="307136000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -968,7 +950,8 @@
     <MESSAGE value="add login page and do some edits" />
     <MESSAGE value="add dir of fore and add some fore pages" />
     <MESSAGE value="readd buildingDAO and solve how to insert" />
-    <option name="LAST_COMMIT_MESSAGE" value="readd buildingDAO and solve how to insert" />
+    <MESSAGE value="add some fore pages from my colleges" />
+    <option name="LAST_COMMIT_MESSAGE" value="add some fore pages from my colleges" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1130,6 +1113,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="777">
           <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1137,6 +1121,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31">
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1153,6 +1138,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="635">
           <caret line="34" column="56" lean-forward="false" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>

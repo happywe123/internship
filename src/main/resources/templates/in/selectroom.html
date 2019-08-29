@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap 实例 - 倒置的导航栏</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<script src="../jquery/jquery.min.js"></script>-->
+    <script src="js/jquery/2.0.0/jquery.min.js"></script>
+    <script src="js/axios/0.17.1/axios.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue-router/2.7.0/vue-router.min.js"></script>
+    <style type="text/css">
+        .divstyle{
+            background: darkgray;
+            height:60px;
+            width:60px;
+            margin:10px;
+            float:left
+        }
+    </style>
+</head>
+<body>
+
+<!-- 引入顶部导航栏 -->
+<div th:replace="include/admin/testNavigator::html" ></div>
+<br>
+<br>
+<br>
+<br>
+
+<div id="app">
+    <div class="container">
+         <div class="row">
+
+             <div class="col-lg-2 col-md-2 col-sm-2">
+                 <ul  class=" nav nav-pills nav-stacked">
+                    <li><a href="../information.html">入住</a></li>
+                    <li class="active"><a href="../selectroom.html">选房</a></li>
+                    <li><a href="../money.html">结账</a></li>
+                </ul>
+            </div>
+
+             <div class="col-lg-10 col-md-10 col-sm-10 ">
+                 <form class="form-inline" role="form" style="margin-bottom: 20px">
+                        <label>房间类型&nbsp</label>
+                        <br><br>
+                        <select class="form-control"  v-model="selected" >
+                             <!--<option>哈哈</option>-->
+                    　　      <option v-for="item in optList1">{{ item }}</option>
+                        </select>
+                        <br><br>
+                 </form>
+
+
+                 <!------测试专用---------->
+                 <!--<ul >-->
+                     <!--<li v-for="item in optList">-->
+                         <!--{{ item.message }}-->
+                     <!--</li>-->
+                 <!--</ul>-->
+
+                 <!------测试专用---------->
+
+
+                 <div v-for="item in search(selected)" :key="item.id" >
+                    <div class="divstyle" v-show="dialog_visible" v-model="clicked "v-model="item.id" v-model="item.name" @click=" del(item.id);add(item.id,item.name)">
+                        <p>{{item.id}} {{item.name}}</p>
+                    </div>
+                 </div>
+
+            <!--<h4 class="page-header"></h4>-->
+            <!--<span>订单信息</span>-->
+
+                 <!--订单信息表-->
+            <div class="listDataTableDiv ">
+                <table class="table table-striped table-bordered table-hover  table-condensed  ">
+                    <thead>
+                    <tr class="success">
+                        <th>ID</th>
+                        <th>客人姓名</th>
+                        <th>编辑</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr v-for="item in newList1":key="item.id">
+                        <td>{{item.id}}</td>
+                        <td>
+                            {{item.name}}
+                        </td>
+                        <td>
+                            <a href="#" @click="addold(item.id,item.name);delnew(item.id)"><span class="fa fa-car"></span></a>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var vm= new Vue({
+        el: '#app',
+        data: {
+            id:'',
+            name:'',
+            id1:'',
+            name1:'',
+            keywords:'',
+            selected: '',
+            clicked: true,
+            optList1: [ '青龙',  '白虎',  '朱雀', '玄武'],
+            optList: [],
+
+            list: [
+                {id:1,name:'青龙'},
+                {id:2,name:'白虎'},
+                {id:3,name:'朱雀'},
+                {id:4,name:'朱雀'},
+                {id:5,name:'朱雀'},
+                {id:6,name:'朱雀'},
+                {id:7,name:'白虎'},
+                {id:8,name:'朱雀'},
+                {id:9,name:'朱雀'},
+                {id:10,name:'朱雀'},
+                {id:11,name:'朱雀'},
+                {id:12,name:'白虎'},
+                {id:13,name:'朱雀'},
+                {id:14,name:'朱雀'},
+                {id:15,name:'朱雀'},
+                {id:16,name:'朱雀'},
+            ],
+            newList1: [],
+            dialog_visible: true
+        },
+
+        mounted: function(){
+            this.getRoomType();
+            console.log(this.optList);
+        },
+
+        methods: {
+
+            // 提取后台拿到的数据
+            getRoomType: function(){
+                var uri = 'alltypies';
+                axios.get(uri).then(function (response) {
+                    //console.log(response.data);
+                    this.optList = response.data;
+                    console.log(this.optList);
+                    console.log(vm.optList1);
+                })
+            },
+
+            showDialog(visible)
+            {
+                this.dialog_visible = visible;
+            },
+            showClicked(checked)
+            {
+                this.checked =  checked;
+            },
+
+            search(keywords) {
+                var newList = [];
+                this.list.forEach(item => {
+                    if (item.name.indexOf(keywords) != -1) {
+                        newList.push(item);
+                    }
+
+                });
+                return newList
+            },
+
+            addold(id2,name2) {
+                var car = {id:id2, name: name2};
+                this.list.push(car)
+            },
+
+            add(id1,name1) {
+                this.id1=id1;
+                this.name1=name1;
+                var car = {id: id1, name:name1};
+                this.newList1.push(car)
+            },
+
+            delnew(id) {
+                this.newList1.some((item, i) => {
+                    if (item.id == id) {
+                        this.newList1.splice(i, 1);
+                        return true;
+                        console.log(item.id);
+                    }
+                })
+            },
+
+            del(id) {
+                this.list.some((item, i) => {
+                    if (item.id == id) {
+                        this.list.splice(i, 1);
+                        return true;
+                    }
+                })
+            },
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<!--<head>-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <!--<meta charset="utf-8">-->
+    <!--<title>login</title>-->
+    <!--<link rel="stylesheet" href="../css/bootstrap.min.css">-->
+    <!--<script src="../vue/vue.min.js"></script>-->
+    <!--<script src="../chartjs/echarts.min.js"></script>-->
+<!--</head>-->
+
+<head th:include="include/admin/adminHeader::html('数据可视化')" ></head>
+
+<body>
+
+<!--接头部导航栏-->
+<div th:replace="include/admin/testNavigator::html" ></div>
+
+<div id="main">
+    <div class="container">
+        <div class="row">
+
+            <!--折线图-->
+            <div class="col-lg-7">
+                <div id="myChart1" style="top: 10px;width: 600px;height:600px;"></div>
+            </div>
+
+            <!--房态，展示各类型房间的比例-->
+            <div class="col-lg-5">
+                  <div id="myChart2" style="width: 500px;height:300px;"></div>
+            </div>
+
+            <!--房型图，展示各类房间的使用情况-->
+            <!--<div id="myChart3" style=" margin-top:20px;width: 600px;height:350px;"></div>-->
+            <div class="col-lg-5">
+                <div id="myChart3" style="top: 20px; width: 600px;height:350px;"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var vm= new Vue({
+        el: '#main',
+        data:{
+           listroom:[],
+
+        },
+
+        mounted() {
+            this.drawLine();
+        },
+
+        methods: {
+
+            getRoomData: function(){
+                var liststate = [];
+                var url = 'roomforstate';
+                axios.get(url).then(function (response) {
+                    console.log(response.length);
+                });
+            },
+
+            drawLine() {
+                // 基于准备好的dom，初始化echarts实例
+                let myChart1 = echarts.init(document.getElementById('myChart1'));
+                let myChart2 = echarts.init(document.getElementById('myChart2'));
+                let myChart3 = echarts.init(document.getElementById('myChart3'));
+                // 第三张图
+
+                // 第三张图房型图
+                myChart3.setOption({
+                    title: {
+                        text: '房型图',
+                    },
+
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'shadow'
+                        }
+                    },
+                    legend: {
+                        /*  data: [ '2012年']*/
+                    },
+                    grid: {
+                        left: '20%',
+                        right: '20%',
+                        bottom: '30%',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'value',
+                        boundaryGap: [0, 0.01]
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: ['单人间', '标准件', '大床房', '套房']
+                    },
+                    series: [
+
+                        {
+                            barWidth: '30', //柱形图宽度
+                            name: '可用',
+                            stack: '总量',
+                            type: 'bar',
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'insideRight'
+                                }
+                            },
+
+                            itemStyle: {
+                                normal: {
+                                    // color: '#a8bcd4'
+                                    formatter: '{c}'
+                                }
+                            },
+                            data:
+//                                [10, 20, 31, 13]
+                                (function(){ //<![CDATA[
+                                    var datatype = [];
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "/roomfortypeid",
+                                        //dataType: 'json',
+                                        async: false,
+                                        success: function(result) {
+                                            console.log(result);
+                                            for(var key in result){
+//                                                 console.log(key);
+//                                                 console.log(result[key]);
+                                                datatype.push({"value":result[key], "name":key})
+                                            }
+                                        }
+                                    });
+                                    return datatype;
+                                    //]]>
+                                })(),
+                          },
+
+                        {
+                            name: '不可用',
+                            stack: '总量',
+                            type: 'bar',
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'insideRight'
+                                }
+                            },
+                            normal: {
+                                // color: '#a8bcd4'
+
+                            },
+                            data: [5, 20, 36, 10]
+                        },
+                    ]
+                });
+
+                // 第一张图营收细则
+                var  option1 = {
+
+                    // Make gradient line here
+                    visualMap: [{
+                        show: false,
+                        type: 'continuous',
+                        seriesIndex: 0,
+                        min: 0,
+                        max: 400
+                    }, {
+                        show: false,
+                        type: 'continuous',
+                        seriesIndex: 1,
+                        dimension: 0,
+                        min: 0,
+                        max: 10,
+                    }],
+                    title: [{
+                        left: 'center',
+                        text: '每日退房订单量'
+                    }, {
+                        top: '55%',
+                        left: 'center',
+                        text: '每日营业额'
+                    }],
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    xAxis: [{
+                        data: [1, 2, 3, 4]
+                    }, {
+                        data: [1, 2, 3, 4],
+                        gridIndex: 1
+                    }],
+                    yAxis: [{
+                        splitLine: {show: false}
+                    }, {
+                        splitLine: {show: false},
+                        gridIndex: 1
+                    }],
+                    grid: [{
+                        bottom: '60%'
+                    }, {
+                        top: '60%'
+                    }],
+                    series: [{
+                        type: 'line',
+                        showSymbol: false,
+                        data: [1, 2, 3, 4],
+                    }, {
+                        type: 'line',
+                        showSymbol: false,
+                        data: [1, 2, 3, 4],
+                        xAxisIndex: 1,
+                        yAxisIndex: 1
+                    }]
+                };
+
+                myChart1.setOption(option1);
+
+                // 第二张图房态图
+
+                var option2 = {
+                    title: {
+                        text: '房态图',
+                        subtext: '虚构数据',
+                        left: 'center'
+                    },
+                    tooltip : {
+                        trigger: 'item',
+                    },
+                    legend: {
+                        // orient: 'vertical',
+                        // top: 'middle',
+                        bottom: 10,
+                        left: 'center',
+//                        data: ['空净房', '脏房','维修房','打扫房','预定房']
+                    },
+                    series : [
+                        {
+                            type: 'pie',
+                            radius : '65%',
+                            center: ['50%', '50%'],
+                            selectedMode: 'single',
+                            data:
+                                (function(){ //<![CDATA[
+                                    var datas = [];
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "/roomforstate",
+                                        //dataType: 'json',
+                                        async: false,
+                                        success: function(result) {
+                                         //   console.log(result);
+                                            for(var key in result){
+
+//                                                console.log(key);
+//                                                console.log(result[key]);
+                                                datas.push({"value":result[key], "name":key})
+                                            }
+
+
+
+
+//                                            for(var i=0; i<result.length; i++) {
+//                                                console.log(result[i].value);
+//                                                datas.push({"value":result[i].value, "name":result[i].name})
+//                                            }
+                                        }
+                                    });
+                                    return datas;
+                                    //]]>
+                                })(),
+                            itemStyle: {
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart2.setOption(option2);
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>
