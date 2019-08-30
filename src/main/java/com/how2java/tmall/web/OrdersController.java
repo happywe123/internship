@@ -6,6 +6,8 @@ import com.how2java.tmall.util.Page4Navigator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class OrdersController {
 
@@ -41,6 +43,12 @@ public class OrdersController {
     public Object update(@RequestBody Orders bean){
         ordersService.update(bean);
         return bean;
+    }
+
+    // 返回 orders 表中的所有订单
+    @GetMapping("/ordersforitem")
+    public List<Orders> getAllOrders(){
+        return ordersService.list();
     }
 
 }

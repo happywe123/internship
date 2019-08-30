@@ -8,5 +8,7 @@ import java.util.List;
 public interface RoomDAO extends JpaRepository<Room,Integer> {
     List<Room> findRoomsByState(String state);
 
+    List<Room> findRoomsByTypeId(int id);
+
     int countByTypeId(int id);
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8">
     <title>Bootstrap 实例 - 倒置的导航栏</title>
@@ -10,6 +11,7 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
     <script src="https://cdn.staticfile.org/vue-router/2.7.0/vue-router.min.js"></script>
+
     <style type="text/css">
         .divstyle{
             background: darkgray;
@@ -19,7 +21,9 @@
             float:left
         }
     </style>
+
 </head>
+
 <body>
 
 <!-- 引入顶部导航栏 -->
@@ -37,7 +41,7 @@
                  <ul  class=" nav nav-pills nav-stacked">
                     <li><a href="../information.html">入住</a></li>
                     <li class="active"><a href="../selectroom.html">选房</a></li>
-                    <li><a href="../money.html">结账</a></li>
+                    <li><a href="../money.html">押金</a> </li>
                 </ul>
             </div>
 
@@ -46,60 +50,44 @@
                         <label>房间类型&nbsp</label>
                         <br><br>
                         <select class="form-control"  v-model="selected" >
-                             <!--<option>哈哈</option>-->
-                    　　      <option v-for="item in optList1">{{ item }}</option>
+                    　　      <option v-for="item in optList">{{ item }}</option>
                         </select>
                         <br><br>
                  </form>
 
-
-                 <!------测试专用---------->
-                 <!--<ul >-->
-                     <!--<li v-for="item in optList">-->
-                         <!--{{ item.message }}-->
-                     <!--</li>-->
-                 <!--</ul>-->
-
-                 <!------测试专用---------->
-
-
-                 <div v-for="item in search(selected)" :key="item.id" >
-                    <div class="divstyle" v-show="dialog_visible" v-model="clicked "v-model="item.id" v-model="item.name" @click=" del(item.id);add(item.id,item.name)">
+                 <div v-for="item in search(selected)":key="item.id" >
+                    <div class="divstyle" v-show="dialog_visible" v-model="clicked "
+                         v-model="item.id" v-model="item.name" @click=" del(item.id);add(item.id,item.name)">
                         <p>{{item.id}} {{item.name}}</p>
+                        <!-- 当前元素如果被点击，就将该元素从原来的集合中删除，添加进新的集合 -->
                     </div>
                  </div>
-
-            <!--<h4 class="page-header"></h4>-->
-            <!--<span>订单信息</span>-->
 
                  <!--订单信息表-->
             <div class="listDataTableDiv ">
                 <table class="table table-striped table-bordered table-hover  table-condensed  ">
                     <thead>
                     <tr class="success">
-                        <th>ID</th>
-                        <th>客人姓名</th>
+                        <th>房间号码</th>
+                        <th>房间类型</th>
                         <th>编辑</th>
                     </tr>
                     </thead>
-
                     <tbody>
-                    <tr v-for="item in newList1":key="item.id">
+                    <tr v-for="item in newList1" :key="item.id">
                         <td>{{item.id}}</td>
                         <td>
                             {{item.name}}
                         </td>
                         <td>
-                            <a href="#" @click="addold(item.id,item.name);delnew(item.id)"><span class="fa fa-car"></span></a>
+                            <a href="#" @click="addold(item.id,item.name);
+                            delnew(item.id)"><span class="glyphicon glyphicon-trash"></span></a>
                         </td>
                     </tr>
                     </tbody>
-
                 </table>
             </div>
-
         </div>
-
         </div>
     </div>
 </div>
@@ -116,65 +104,61 @@
             keywords:'',
             selected: '',
             clicked: true,
-            optList1: [ '青龙',  '白虎',  '朱雀', '玄武'],
             optList: [],
-
-            list: [
-                {id:1,name:'青龙'},
-                {id:2,name:'白虎'},
-                {id:3,name:'朱雀'},
-                {id:4,name:'朱雀'},
-                {id:5,name:'朱雀'},
-                {id:6,name:'朱雀'},
-                {id:7,name:'白虎'},
-                {id:8,name:'朱雀'},
-                {id:9,name:'朱雀'},
-                {id:10,name:'朱雀'},
-                {id:11,name:'朱雀'},
-                {id:12,name:'白虎'},
-                {id:13,name:'朱雀'},
-                {id:14,name:'朱雀'},
-                {id:15,name:'朱雀'},
-                {id:16,name:'朱雀'},
-            ],
+            list:[],
             newList1: [],
             dialog_visible: true
         },
 
         mounted: function(){
             this.getRoomType();
-            console.log(this.optList);
+            this.getRoomsBytype();
         },
 
         methods: {
 
-            // 提取后台拿到的数据
+            // 根据房间类型获取房间号
+            getRoomsBytype:function(){
+                var uri = 'getroomnum';
+                var data = [];
+
+                axios.get(uri).then(function (response) {
+                    var responseData = response.data;
+                    for(var key in responseData){
+                        var  keyvalue = response.data[key];
+                        for(var i in keyvalue){
+                            data.push({"id":keyvalue[i],"name":key})
+                        }
+                    }
+                    vm.list = data;
+                })
+            },
+
+            // 访问后台取出房间类型的数据
             getRoomType: function(){
                 var uri = 'alltypies';
                 axios.get(uri).then(function (response) {
-                    //console.log(response.data);
-                    this.optList = response.data;
-                    console.log(this.optList);
-                    console.log(vm.optList1);
-                })
+                    vm.optList = response.data;
+                });
             },
 
             showDialog(visible)
             {
                 this.dialog_visible = visible;
             },
+
             showClicked(checked)
             {
                 this.checked =  checked;
             },
 
+            // 将获取到的关键字传入 search 函数，查看该关键字对应的 id
             search(keywords) {
                 var newList = [];
                 this.list.forEach(item => {
                     if (item.name.indexOf(keywords) != -1) {
                         newList.push(item);
                     }
-
                 });
                 return newList
             },
@@ -185,8 +169,8 @@
             },
 
             add(id1,name1) {
-                this.id1=id1;
-                this.name1=name1;
+                this.id1 = id1;
+                this.name1 = name1;
                 var car = {id: id1, name:name1};
                 this.newList1.push(car)
             },
@@ -209,6 +193,8 @@
                     }
                 })
             },
+
+
         }
     });
 

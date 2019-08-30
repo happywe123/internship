@@ -50,8 +50,6 @@ public class BuildingController {
     public List<Building> getall(){
         List<Building>  list = buildingService.getAll();
         return list;
-
     }
-
 
 }

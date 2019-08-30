@@ -45,6 +45,12 @@ public class RoomController {
         return roomService.list();
     }
 
+    // 查找该房间类型下所有的 roomnum
+    @GetMapping("/getroomnum")
+    public Map<String, List<Integer>> getroomnum(){
+        return roomService.getRoomNumber();
+    }
+
 
 
     @GetMapping("/rooms/{id}")

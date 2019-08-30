@@ -11,10 +11,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 
 @Service
 public class RoomService {
@@ -63,13 +61,12 @@ public class RoomService {
         for(String key : map.keySet()){
             map.put(key,roomDAO.findRoomsByState(key).size());
         }
-       // System.out.println(map.get("空净房"));
         return map;
     }
 
     // 数据可视化--房型图
     public Map<String, Integer> getForRoomType(){
-        Map<String,Integer> mapNumber  =new HashMap<>();
+        Map<String,Integer> mapNumber = new HashMap<>();
         Map<Integer,String> typeMap = new HashMap<>();
         typeMap.put(1,"单人间");
         typeMap.put(2,"套房");
@@ -82,5 +79,28 @@ public class RoomService {
         System.out.println(mapNumber.get("单人间"));
         return mapNumber;
     }
+
+    // 根据房间类型的 id 返回该 id 下的所有房间的 roomnum
+    public Map<String, List<Integer>> getRoomNumber(){
+        Map<String, List<Integer>> res = new HashMap<>();
+
+        Map<Integer,String> biao = new HashMap<>();
+        biao.put(1,"单人间");biao.put(2,"套房");
+        biao.put(3,"大床房");biao.put(4,"标准间");
+
+        for(int i = 1; i <= 4; i++){
+            List<Room> list = roomDAO.findRoomsByTypeId(i);
+            List<Integer> temp = new ArrayList<>();
+
+            for(int j = 0; j < list.size(); j++){
+                temp.add(list.get(j).getRoomnum());
+            }
+
+            res.put(biao.get(i),temp);
+
+        }
+        return res;
+    }
+
 
 }

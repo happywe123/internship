@@ -65,7 +65,6 @@ public class AdminPageController {
         return "in/money";
     }
 
-
     // 办理退房
     @GetMapping(value="/checkout")
     public String checkOut(){
